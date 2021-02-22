@@ -1,0 +1,44 @@
+{
+    "name": "PlayerActions",
+    "maps": [
+        {
+            "name": "Caminando",
+            "id": "fe8d5b1f-4058-4c44-a89c-e1db2dab90f7",
+            "actions": [
+                {
+                    "name": "Saltar",
+                    "type": "Button",
+                    "id": "a9359c91-6c89-4d81-bdb6-544db619ac76",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "38da07f2-21e2-4bb8-ac27-ad388d0df4da",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Saltar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7cb8f72a-e35a-47a9-af3d-5018afe30ea6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Saltar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
