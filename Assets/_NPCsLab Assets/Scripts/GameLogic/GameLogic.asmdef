@@ -1,8 +1,7 @@
 {
-    "name": "Level",
+    "name": "GameLogic",
     "references": [
-        "GUID:6dc2b9eb6deb2424ab2910f284276b36",
-        "GUID:d2bb7413b55a77b428598af893cfafdc"
+        "GUID:6dc2b9eb6deb2424ab2910f284276b36"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
