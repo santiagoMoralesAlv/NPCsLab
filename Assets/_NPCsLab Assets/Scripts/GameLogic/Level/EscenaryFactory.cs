@@ -33,6 +33,7 @@ namespace GameLogic.Level
 
         private void Update()
         {
+            //Create two module in front
             if (Character.Instance.gameObject.transform.position.x>=nextModulePosition-(moduleSize*2))
             {
                 base.InstantiateEntity();
