@@ -1,0 +1,78 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using GameLogic.Characters;
+using UnityEngine;
+using UnityEngine.PlayerLoop;
+
+namespace GameLogic.Levels
+{
+    public class LevelControl : MonoBehaviour
+    {
+        // <summary> Singleton </summary>
+        private static LevelControl instance;
+        public static LevelControl Instance => instance;
+        
+        [SerializeField] private ModuleBuilder moduleBuilder;
+        
+        [SerializeField] private float velocity, timeRunning;
+        private int meters;
+
+        public int Meters => meters;
+        public float TimeRunning => timeRunning;
+
+        private void Awake()
+        {
+            //Singleton initialization
+            instance = this;
+            Player.Instance.InstanceCharacter(moduleHeight);
+
+            moduleBuilder.Init();
+            InstanceFirtsModules();
+        }
+
+        void Update()
+        {
+            timeRunning += Time.deltaTime;
+            meters = (int)(timeRunning/velocity);
+        }
+
+        [Space(10)] [SerializeField] private float moduleWidth, moduleHeight;
+        private Queue<GameObject> modules;
+
+        private void InstanceFirtsModules()
+        {
+            modules = new Queue<GameObject>();
+            modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0").WithPlatforms(2).Build() );
+            for (int i = 0; i < 6; i++)
+            {
+                InstanceModule();
+            }
+        }
+        
+        void FixedUpdate()
+        {
+            foreach (var module in modules)
+            {
+                module.transform.Translate(Vector3.left*velocity, Space.Self);
+            }
+
+            if (modules.Peek().transform.position.x <= moduleWidth * -2)
+            {
+                modules.Dequeue().GetComponent<Module>().DeactiveParts();
+                InstanceModule();
+            }
+        }
+
+        private void InstanceModule()
+        {
+            float lastModule = modules.Last().transform.localPosition.x;
+            modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0").WithPlatforms(2).WithPickUps(5).Build());
+            
+            //WithPlatforms(4).WithPickUps(8).WithHazards(2)
+            modules.Last().transform.localPosition = new Vector3(lastModule+moduleWidth,0,0);
+        }
+    }
+}
+

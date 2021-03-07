@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 4000a3991d084fb4ca04f4e14de1b514
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: BROMO
+  fontNames:
+  - BROMO
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 00003298ba3714c4183513c307efc75d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

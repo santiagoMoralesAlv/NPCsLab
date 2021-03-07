@@ -1,7 +1,8 @@
 {
     "name": "GameLogic",
     "references": [
-        "GUID:6dc2b9eb6deb2424ab2910f284276b36"
+        "GUID:6dc2b9eb6deb2424ab2910f284276b36",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
