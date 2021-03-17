@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_NPCsLab Assets/Scenes/Menu.unity
     guid: 021172a714517bb4081a6998fd5e32fa
-  - enabled: 1
+  - enabled: 0
     path: Assets/_NPCsLab Assets/Scenes/Game.unity
     guid: 937714af0962a0641916b50a14f7f1c0
+  - enabled: 1
+    path: Assets/_NPCsLab Assets/Scenes/Test/Grevict.unity
+    guid: 3f4ecc91c5c469349a02bc5090ca5aa0
   m_configObjects: {}

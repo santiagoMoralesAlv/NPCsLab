@@ -6,9 +6,25 @@
             "id": "55728df6-6155-4e80-961f-92ea2b420d71",
             "actions": [
                 {
+                    "name": "PrimaryContact",
+                    "type": "PassThrough",
+                    "id": "deee9c12-78da-4d14-a01c-17dfea837f14",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "PrimaryPosition",
+                    "type": "PassThrough",
+                    "id": "51bd50ff-e4ce-4f5e-bd0e-ae1a3792eb80",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Move",
                     "type": "PassThrough",
-                    "id": "407e0029-72d2-4e17-b34b-050272519551",
+                    "id": "af3f1a79-903c-413e-8361-eca1796e2c6d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -16,15 +32,15 @@
                 {
                     "name": "Jump",
                     "type": "PassThrough",
-                    "id": "a442fdae-0fda-4848-af50-ce365911bd88",
+                    "id": "1c5279ad-c37c-4c92-b6cd-0fcdd5ab6037",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "Slide",
-                    "type": "Button",
-                    "id": "67e14c90-2a11-44eb-93a2-f2f1ba8fda95",
+                    "type": "PassThrough",
+                    "id": "f0582139-20be-4148-8d1a-7ec64a1f6ac3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -32,8 +48,30 @@
             ],
             "bindings": [
                 {
+                    "name": "",
+                    "id": "03262b05-d91a-47d3-8e72-edbbe6e5b634",
+                    "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryContact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5931dca3-9131-4972-b758-96000963f47a",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "Sideways",
-                    "id": "07b6ce67-d1c3-4d49-9a0e-29ea668136d6",
+                    "id": "31c7a1f9-a1e8-4e50-a858-91319b6fc2f1",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
@@ -44,7 +82,7 @@
                 },
                 {
                     "name": "negative",
-                    "id": "7889fd83-828b-48a1-9345-6516cc5ce9a3",
+                    "id": "92ac8a7a-cfce-4e25-baa1-cb89db66a8f2",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -55,7 +93,7 @@
                 },
                 {
                     "name": "positive",
-                    "id": "25c5dd3b-f21f-46c1-a170-d5ea45ab044f",
+                    "id": "00fda39e-88c1-4fb9-9b6f-ed318ba165fd",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -66,7 +104,7 @@
                 },
                 {
                     "name": "",
-                    "id": "0b44f2c6-df62-4913-986a-70bc3de14b81",
+                    "id": "6825884a-0725-4adf-af70-24e5960cf8dc",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
@@ -77,7 +115,7 @@
                 },
                 {
                     "name": "",
-                    "id": "bf497403-8341-454c-835d-066a467445b5",
+                    "id": "3a65ac69-9fe2-4417-8652-2bc6cb84fb3b",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",

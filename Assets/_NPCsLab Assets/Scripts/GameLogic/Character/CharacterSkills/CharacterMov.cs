@@ -1,55 +1,83 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+using System;
+using UnityEngine.InputSystem;
 
-public class CharacterMov : MonoBehaviour
+[DefaultExecutionOrder(-1)]
+public class CharacterMov : Singleton<CharacterMov>
 {
+    #region Events
+    public delegate void StartTouch(Vector2 position, float time);
+    public event StartTouch OnStartTouch;
+    public delegate void EndTouch(Vector2 position, float time);
+    public event EndTouch OnEndTouch;
+    #endregion
 
-   [SerializeField] public float speed, jumpSpeed,slideSpeed, hurtForce;
+    [SerializeField] public float speed, jumpSpeed, slideSpeed, hurtForce;
 
-   [SerializeField] private LayerMask ground;
+    [SerializeField] private LayerMask ground;
 
-    private CharacterMovement playerActionControls;
+    private @CharacterMovInput playerControls;
 
     public float crouchingSpeed = 4f;
-
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Collider2D col;
     private Animator anim;
+    private Camera mainCamera;
+
+    private Vector3 initialPosition;
 
     [SerializeField] private BoxCollider2D slideColl;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerActionControls = new CharacterMovement();
+        playerControls = new @CharacterMovInput();
         col = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        initialPosition = this.transform.position;
+        mainCamera = Camera.main;
     }
 
     private void OnEnable()
     {
-        playerActionControls.Enable();
+        playerControls.Enable();
     }
 
     private void OnDisable()
     {
-        playerActionControls.Disable();
+        playerControls.Disable();
     }
     void Start()
     {
-        playerActionControls.General.Jump.performed += ctx => Jump(ctx.ReadValue<float>());
-        playerActionControls.General.Slide.performed += _ => Slide();
+        playerControls.General.PrimaryContact.started += ctx => StartTouchPrimary(ctx);
+        playerControls.General.PrimaryContact.canceled += ctx => EndTouchPrimary(ctx);
+
+
+        playerControls.General.Jump.performed += ctx => Jump(ctx.ReadValue<float>());
+        playerControls.General.Slide.performed += _ => Slide();
 
     }
 
     void Update()
     {
-         Move();
+        Move();
     }
 
-    private void Jump(float val)
+    private void StartTouchPrimary(InputAction.CallbackContext context)
+    {
+        if (OnStartTouch != null) OnStartTouch(Utils.ScreenToWorld(mainCamera,playerControls.General.PrimaryPosition.ReadValue<Vector2>()),(float)context.startTime);
+    }
+    private void EndTouchPrimary(InputAction.CallbackContext context)
+    {
+        if (OnEndTouch != null) OnEndTouch(Utils.ScreenToWorld(mainCamera, playerControls.General.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
+    }
+    public Vector2 PrimaryPosition()
+    {
+        return Utils.ScreenToWorld(mainCamera, playerControls.General.PrimaryPosition.ReadValue<Vector2>());
+    }
+    public void Jump(float val)
     {
         if (val == 1 && col.IsTouchingLayers(ground))
         {
@@ -59,7 +87,7 @@ public class CharacterMov : MonoBehaviour
         }
     }
     
-     private void Slide()
+     public void Slide()
     {
 
          if (col.IsTouchingLayers(ground))
@@ -67,7 +95,7 @@ public class CharacterMov : MonoBehaviour
             anim.SetBool("Slide",true);
             col.enabled = false;
             slideColl.enabled=true;
-            rb.AddForce(new Vector2(slideSpeed,0),ForceMode2D.Impulse);
+            //rb.AddForce(new Vector2(slideSpeed,0),ForceMode2D.Impulse);
             StartCoroutine("stopSlide");
         }
               
@@ -81,17 +109,21 @@ public class CharacterMov : MonoBehaviour
     }
     IEnumerator stopSlide()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.7f);
         anim.Play("PlayerRun");
         anim.SetBool("Slide", false);
         col.enabled = true;
         slideColl.enabled = false;
+
+        /*yield return new WaitForSeconds(0.6f);
+        this.transform.position = initialPosition;*/
+
     }
     private void Move()
     {
         //Read the movement value
 
-        float movementInput = playerActionControls.General.Move.ReadValue<float>();
+        float movementInput = playerControls.General.Move.ReadValue<float>();
         //Move the player
 
         Vector3 currentPosition = transform.position;
