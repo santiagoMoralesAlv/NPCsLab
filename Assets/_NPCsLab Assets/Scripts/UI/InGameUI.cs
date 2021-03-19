@@ -22,5 +22,10 @@ namespace UI
             
             SceneControl.Instance.ReturnToMenu();
         }
+
+        public void PlayGame()
+        {
+            GameStatus.Instance.Play();
+        }
     }
 }

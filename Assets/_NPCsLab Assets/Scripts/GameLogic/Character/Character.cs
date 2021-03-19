@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core;
 using UnityEngine;
 
 namespace GameLogic.Characters
@@ -109,7 +110,12 @@ namespace GameLogic.Characters
             isAlive = false;
             
             m_animator.SetTrigger("Dead"); //Notify a new state transition
+            
+            
+            //Machetazo
+            GameStatus.Instance.Stop();
         }
+        
         #endregion
     }
 }
