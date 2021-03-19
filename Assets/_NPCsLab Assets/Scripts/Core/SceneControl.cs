@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 namespace Core
 {
     /// <summary>
@@ -13,30 +12,13 @@ namespace Core
         public static SceneControl Instance {get; private set; }
         void Awake()
         {
-            if (Instance != null)
-            {
-                Destroy(this.gameObject);
-            }else if (SceneManager.GetActiveScene().name != "Menu")
-            {
-                Instance = this;
-                DontDestroyOnLoad(this.gameObject);
-                ReturnToMenu();
-            }
-            else
-            {
-                Instance = this;
-                DontDestroyOnLoad(this.gameObject);
-            }
+            Instance = this;
         }
         
-        public void StartGame()
+
+        public void ReturnToHome()
         {
             SceneManager.LoadScene("Game");
-        }
-
-        public void ReturnToMenu()
-        {
-            SceneManager.LoadScene("Menu");
         }
         
         public void OpenScene(string scene)

@@ -7,9 +7,10 @@ namespace Core
 {
     public enum Status
     {
-        stopped,
+        built,
         played,
         paused,
+        stopped,
     }
 
     public class GameStatus : MonoBehaviour
@@ -20,18 +21,28 @@ namespace Core
         {
             //Singleton
             Instance = this;
+
+            Built();
         }
 
 
         [SerializeField] private float transitionSpeed;
 
+        
         private Status i_status;
+        private bool inTransition;
         public Status Status => i_status;
 
-        public delegate void NotifyStatus(Status status);
+        public delegate void NotifyStatus(Status status, bool inTransition);
 
         public NotifyStatus e_NewStatus;
 
+        public void Built()
+        {
+            if (i_status != Status.built)
+                StartCoroutine(Interpolate(1, 1, 0.02f, 0.02f, () => { ChangeStatus(Status.built); }));
+        }
+        
         public void Stop()
         {
             if (i_status != Status.stopped)
@@ -48,30 +59,29 @@ namespace Core
         {
             if (i_status != Status.played)
             {
-                StartCoroutine(Interpolate(0, 1, 0.0005f, 0.02f, () => { ChangeStatus(Status.played); }));
+                StartCoroutine(Interpolate(0, 1, 0.0005f, 0.02f, () => { ChangeStatus(Status.played);  }));
             }
         }
 
         private void ChangeStatus(Status t_status)
         {
             i_status = t_status;
-            e_NewStatus(i_status);
+            e_NewStatus(i_status, inTransition);
         }
 
-        private IEnumerator Interpolate(float from, float to, float fixedFrom, float fixedTo, Action callback)
+        private IEnumerator Interpolate(float from, float to, float fixedFrom, float fixedTo, Action callbackNotify)
         {
-            Debug.Log($"De {from} hasta {to}");
-            callback();
+            //Debug.Log($"De {from} hasta {to}");
+            inTransition = true;
+            callbackNotify();
 
-            //Time.fixedDeltaTime=0.0005f;
             Time.timeScale = from;
             Time.fixedDeltaTime = fixedFrom;
             while (Math.Abs(Time.timeScale - to) > 0.011)
             {
-                Debug.Log($"Fixed: {Time.fixedDeltaTime} * Scale: {Time.timeScale}");
+                //Debug.Log($"Fixed: {Time.fixedDeltaTime} * Scale: {Time.timeScale}");
                 Time.timeScale = Mathf.Lerp(Time.timeScale, to, transitionSpeed * Time.fixedDeltaTime);
                 Time.fixedDeltaTime = Mathf.Lerp(Time.fixedDeltaTime, fixedTo, transitionSpeed * Time.fixedDeltaTime);
-                // Time.timeScale = Mathf.MoveTowards(Time.timeScale, to, transitionSpeed * Time.fixedDeltaTime);
 
                 yield return null;
             }
@@ -79,7 +89,8 @@ namespace Core
             Time.timeScale = to;
             Time.fixedDeltaTime = fixedTo;
 
-            //Time.fixedDeltaTime=0.02f;
+            inTransition = false;
+            callbackNotify();
         }
     }
 }
