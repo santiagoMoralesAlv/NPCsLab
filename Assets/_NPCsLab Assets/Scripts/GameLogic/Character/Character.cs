@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core;
 using UnityEngine;
 
 namespace GameLogic.Characters
@@ -13,6 +14,7 @@ namespace GameLogic.Characters
         private static Character instance;
         public static Character Instance => instance;
         private Animator m_animator; 
+        private Rigidbody2D m_rg; 
 
         private void Awake()
         {
@@ -20,6 +22,8 @@ namespace GameLogic.Characters
             instance = this;
             
             m_animator = this.GetComponent<Animator>();
+            m_rg = this.GetComponent<Rigidbody2D>();
+            m_rg.simulated = false;
         }
 
         #endregion
@@ -101,15 +105,22 @@ namespace GameLogic.Characters
         {
             m_animator = this.GetComponent<Animator>();
             isAlive = true;
+            m_rg.simulated = true;
 
             m_animator.SetTrigger("WakeUp"); //Notify a new state transition
         }
         public void Kill()
         {
             isAlive = false;
+            m_rg.simulated = false;
             
             m_animator.SetTrigger("Dead"); //Notify a new state transition
+            
+            
+            //Machetazo
+            GameStatus.Instance.Stop();
         }
+        
         #endregion
     }
 }

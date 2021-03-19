@@ -12,24 +12,23 @@ namespace GameLogic
     {
         public static Player Instance {get; private set; }
 
+        private GameObject character;
+        
+        
+        
+        
+        
         private void Awake()
         {
-            //Singleton
-            if (Instance != null && Instance != this)
-            {
-                Destroy(Instance.gameObject);
-            }
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            NewCharacter(0);
         }
 
         [SerializeField] private GameObject[] characterPreFab;
         private GameObject i_character;
-        public void SetCharacter(int index) {
-            i_character = characterPreFab[index];
-        }
-        public void InstanceCharacter(float yPos) {
-            Instantiate(i_character, new Vector3(0.0f, yPos, 0.0f), Quaternion.identity);
+        public void NewCharacter(int index) {
+            Destroy(this.i_character);
+            i_character = Instantiate(characterPreFab[index], new Vector3(0.0f, 5f, 0.0f), Quaternion.identity);
         }
     }
 
