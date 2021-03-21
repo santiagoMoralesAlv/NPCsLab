@@ -54,6 +54,11 @@ namespace GameLogic.Levels
         [Space(10)] [SerializeField] private float moduleWidth, moduleHeight;
         private Queue<GameObject> modules;
 
+        public void CollectCoin()
+        {
+            coins++;
+        }
+        
         private void InstanceFirtsModules()
         {
             modules = new Queue<GameObject>();

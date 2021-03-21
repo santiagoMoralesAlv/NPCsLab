@@ -11,6 +11,7 @@ namespace GameLogic.Levels
         {
             if (other.CompareTag("Player"))
             {
+                LevelControl.Instance.CollectCoin();
                 gameObject.SetActive(false);
             }
         }

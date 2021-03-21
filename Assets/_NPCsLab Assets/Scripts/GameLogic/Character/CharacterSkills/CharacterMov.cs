@@ -24,7 +24,6 @@ public class CharacterMov : Singleton<CharacterMov>
     private SpriteRenderer sr;
     private Collider2D col;
     private Animator anim;
-    private Camera mainCamera;
 
     private Vector3 initialPosition;
 
@@ -37,7 +36,6 @@ public class CharacterMov : Singleton<CharacterMov>
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         initialPosition = this.transform.position;
-        mainCamera = Camera.main;
     }
 
     private void OnEnable()
@@ -67,15 +65,15 @@ public class CharacterMov : Singleton<CharacterMov>
 
     private void StartTouchPrimary(InputAction.CallbackContext context)
     {
-        if (OnStartTouch != null) OnStartTouch(Utils.ScreenToWorld(mainCamera,playerControls.General.PrimaryPosition.ReadValue<Vector2>()),(float)context.startTime);
+        if (OnStartTouch != null) OnStartTouch(Utils.ScreenToWorld(playerControls.General.PrimaryPosition.ReadValue<Vector2>()),(float)context.startTime);
     }
     private void EndTouchPrimary(InputAction.CallbackContext context)
     {
-        if (OnEndTouch != null) OnEndTouch(Utils.ScreenToWorld(mainCamera, playerControls.General.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
+        if (OnEndTouch != null) OnEndTouch(Utils.ScreenToWorld( playerControls.General.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
     }
     public Vector2 PrimaryPosition()
     {
-        return Utils.ScreenToWorld(mainCamera, playerControls.General.PrimaryPosition.ReadValue<Vector2>());
+        return Utils.ScreenToWorld( playerControls.General.PrimaryPosition.ReadValue<Vector2>());
     }
     public void Jump(float val)
     {
