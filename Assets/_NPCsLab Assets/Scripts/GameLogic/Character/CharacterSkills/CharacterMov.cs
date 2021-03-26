@@ -101,7 +101,7 @@ public class CharacterMov : Singleton<CharacterMov>
     }
     IEnumerator stopJump()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.7f);
         anim.Play("PlayerRun");
         anim.SetBool("Jump", false);
         
