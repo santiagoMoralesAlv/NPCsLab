@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430040920c54e7748a54ef158254a43b, type: 3}
   m_Name: Hazards Pool
   m_EditorClassIdentifier: 
-  prefabs: []
+  prefabs:
+  - {fileID: 48823705966504905, guid: 4780bef22d371fe489975ee3fdb3469f, type: 3}

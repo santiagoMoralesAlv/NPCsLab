@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Hazards Factory
   m_EditorClassIdentifier: 
   pool: {fileID: 11400000, guid: fbc3257f170395341acfc3a13d4403b6, type: 2}
+  xMargin: 1
+  yMargin: 0
