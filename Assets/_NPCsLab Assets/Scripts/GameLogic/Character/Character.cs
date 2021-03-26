@@ -117,9 +117,9 @@ namespace GameLogic.Characters
             m_animator.SetTrigger("Dead"); //Notify a new state transition
             
             
-            //Machetazo
             GameStatus.Instance.Stop();
         }
+
         
         #endregion
     }

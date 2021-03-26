@@ -46,7 +46,7 @@ namespace Core
         public void Stop()
         {
             if (i_status != Status.stopped)
-                StartCoroutine(Interpolate(1, 0, 0.02f, 0.0005f, () => { ChangeStatus(Status.stopped); }));
+                StartCoroutine(Interpolate(1, 0.5f, 0.02f, 0.0005f, () => { ChangeStatus(Status.stopped); }));
         }
 
         public void Pause()
@@ -77,8 +77,12 @@ namespace Core
 
             Time.timeScale = from;
             Time.fixedDeltaTime = fixedFrom;
-            while (Math.Abs(Time.timeScale - to) > 0.011)
+
+            float timeToStop = 0;
+            while (Math.Abs(Time.timeScale - to) > 0.011 || timeToStop>2f)
             {
+                timeToStop += Time.deltaTime;
+                
                 //Debug.Log($"Fixed: {Time.fixedDeltaTime} * Scale: {Time.timeScale}");
                 Time.timeScale = Mathf.Lerp(Time.timeScale, to, transitionSpeed * Time.fixedDeltaTime);
                 Time.fixedDeltaTime = Mathf.Lerp(Time.fixedDeltaTime, fixedTo, transitionSpeed * Time.fixedDeltaTime);

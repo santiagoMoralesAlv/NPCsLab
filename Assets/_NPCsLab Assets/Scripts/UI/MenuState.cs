@@ -18,6 +18,7 @@ namespace UI
         // Update is called once per frame
         void NewGameStatus(Status _status, bool inTransition)
         {
+            
             if (inTransition)
             {
                 MenuManager.Instance.CloseAndCleanAll();

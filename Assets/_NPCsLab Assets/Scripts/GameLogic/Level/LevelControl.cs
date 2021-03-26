@@ -93,7 +93,7 @@ namespace GameLogic.Levels
         {
             float lastModule = modules.Last().transform.localPosition.x;
             modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0")
-                .WithPlatforms(plataformNum).WithPickUps(5).WithHazards(1).Build());
+                .WithPlatforms(plataformNum).WithPickUps(0).WithHazards(0).Build());
 
             modules.Last().transform.localPosition = new Vector3(lastModule + moduleWidth, 0, 0);
         }
