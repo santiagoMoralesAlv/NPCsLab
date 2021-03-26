@@ -90,6 +90,7 @@ namespace Core
             Time.timeScale = to;
             Time.fixedDeltaTime = fixedTo;
 
+            
             inTransition = false;
             callbackNotify();
         }

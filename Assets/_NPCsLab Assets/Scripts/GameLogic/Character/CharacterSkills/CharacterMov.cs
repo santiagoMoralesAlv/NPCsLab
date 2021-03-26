@@ -127,7 +127,7 @@ public class CharacterMov : Singleton<CharacterMov>
 
         Vector3 currentPosition = transform.position;
         currentPosition.x += movementInput * speed * Time.deltaTime;
-        transform.position = currentPosition;
+        //transform.position = currentPosition;
 
         //Animation
         if (movementInput != 0) anim.SetBool("Run", true);
