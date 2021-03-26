@@ -80,7 +80,7 @@ public class CharacterMov : Singleton<CharacterMov>
         if (val == 1 && col.IsTouchingLayers(ground))
         {
             rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
-            anim.SetBool("Jump",true);
+            anim.SetTrigger("Jump");
             StartCoroutine("stopJump");
         }
     }
@@ -90,7 +90,7 @@ public class CharacterMov : Singleton<CharacterMov>
 
          if (col.IsTouchingLayers(ground))
          {            
-            anim.SetBool("Slide",true);
+            anim.SetTrigger("Slide");
             col.enabled = false;
             slideColl.enabled=true;
             //rb.AddForce(new Vector2(slideSpeed,0),ForceMode2D.Impulse);
@@ -100,16 +100,16 @@ public class CharacterMov : Singleton<CharacterMov>
     }
     IEnumerator stopJump()
     {
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(0.8f);
         anim.Play("PlayerRun");
         anim.SetBool("Jump", false);
         
     }
     IEnumerator stopSlide()
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.55f);
         anim.Play("PlayerRun");
-        anim.SetBool("Slide", false);
+        //anim.SetBool("Slide", false);
         col.enabled = true;
         slideColl.enabled = false;
 

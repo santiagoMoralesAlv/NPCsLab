@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 1538670648}
   - component: {fileID: 6741381528397968634}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Vark
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,7 +213,7 @@ Rigidbody2D:
   m_Mass: 1.2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -228,7 +228,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 5411687583155107587}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7906798a7286bbf4fb134c2ddb3aa889, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpSpeed: 14
+  jumpSpeed: 20
   slideSpeed: 10
   hurtForce: 20
   ground:
