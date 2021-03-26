@@ -18,6 +18,7 @@ namespace GameLogic.Levels
         [SerializeField] private ModuleBuilder moduleBuilder;
 
         [SerializeField] private float velocity, timeRunning;
+        [SerializeField] private int plataformNum;
         private int passedModules;
         private int coins;
         public int PassedModules => passedModules;
@@ -63,7 +64,7 @@ namespace GameLogic.Levels
         {
             modules = new Queue<GameObject>();
             modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0")
-                .WithPlatforms(2).Build());
+                .WithPlatforms(plataformNum).Build());
             for (int i = 0; i < 25; i++)
             {
                 InstanceModule();
@@ -92,7 +93,7 @@ namespace GameLogic.Levels
         {
             float lastModule = modules.Last().transform.localPosition.x;
             modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0")
-                .WithPlatforms(2).WithPickUps(5).WithHazards(0).Build());
+                .WithPlatforms(plataformNum).WithPickUps(5).WithHazards(0).Build());
 
             modules.Last().transform.localPosition = new Vector3(lastModule + moduleWidth, 0, 0);
         }
