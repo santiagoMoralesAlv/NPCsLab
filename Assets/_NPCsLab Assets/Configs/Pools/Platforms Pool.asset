@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Platforms Pool
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 3636356349461311094, guid: 7d28e536124410f4ca150254c31f64e2, type: 3}
-  - {fileID: 5529139678539692544, guid: e41290ead9b0f1941ac2eadeef1d9d93, type: 3}
-  - {fileID: 6622502753686219201, guid: 55edd3bcb15116446bdb41f8086467b4, type: 3}
-  - {fileID: 8202065627789569245, guid: b0938f9ca60e6074fb39446deef57a2f, type: 3}
+  - {fileID: 5529139678539692544, guid: 7efb807420e04b249bdff91275f8778a, type: 3}
+  - {fileID: 5529139678539692544, guid: 18f162665c9bba5469960f048e874ef5, type: 3}
+  - {fileID: 5529139678539692544, guid: 986df650ed4a57a4ea6b152f65c875cd, type: 3}
+  - {fileID: 5529139678539692544, guid: 1f9fc6170df1344408aa00f9c9596295, type: 3}
+  - {fileID: 5529139678539692544, guid: 41331d47e780e984ca536c87bd13c444, type: 3}
