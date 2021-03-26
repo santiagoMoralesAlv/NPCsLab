@@ -78,14 +78,11 @@ namespace Core
             Time.timeScale = from;
             Time.fixedDeltaTime = fixedFrom;
 
-            float timeToStop = 0;
-            while (Math.Abs(Time.timeScale - to) > 0.011 || timeToStop>2f)
+            while (Math.Abs(Time.timeScale - to) > 0.011)
             {
-                timeToStop += Time.deltaTime;
-                
                 //Debug.Log($"Fixed: {Time.fixedDeltaTime} * Scale: {Time.timeScale}");
-                Time.timeScale = Mathf.Lerp(Time.timeScale, to, transitionSpeed * Time.fixedDeltaTime);
-                Time.fixedDeltaTime = Mathf.Lerp(Time.fixedDeltaTime, fixedTo, transitionSpeed * Time.fixedDeltaTime);
+                Time.timeScale = Mathf.Lerp(Time.timeScale, to, transitionSpeed );
+                Time.fixedDeltaTime = Mathf.Lerp(Time.fixedDeltaTime, fixedTo, transitionSpeed );
 
                 yield return null;
             }
