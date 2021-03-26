@@ -15,8 +15,22 @@ namespace GameLogic.Utilities
         {
             bombAnimator = GetComponent<Animator>();
         }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                bombAnimator.SetTrigger("Explosion");
+                StartCoroutine("dead");
+                player = other.gameObject;
+              
+            }
+        }
+
         private void OnCollisionEnter2D(Collision2D other)
         {
+            
+            
             if (other.gameObject.CompareTag("Player"))
             {
                 bombAnimator.SetTrigger("Explosion");
@@ -27,7 +41,7 @@ namespace GameLogic.Utilities
         }
         IEnumerator dead()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.15f);
             player.gameObject.GetComponent<Character>().Kill();
         }
 

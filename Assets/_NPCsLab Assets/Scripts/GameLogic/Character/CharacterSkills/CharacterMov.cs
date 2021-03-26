@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using UnityEngine.InputSystem;
+using Core;
 
 [DefaultExecutionOrder(-1)]
 public class CharacterMov : Singleton<CharacterMov>
@@ -77,7 +78,7 @@ public class CharacterMov : Singleton<CharacterMov>
     }
     public void Jump(float val)
     {
-        if (val == 1 && col.IsTouchingLayers(ground))
+        if (val == 1 && col.IsTouchingLayers(ground) && (GameStatus.Instance.Status == Status.played))
         {
             rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
             anim.SetTrigger("Jump");
@@ -88,7 +89,7 @@ public class CharacterMov : Singleton<CharacterMov>
      public void Slide()
     {
 
-         if (col.IsTouchingLayers(ground))
+         if (col.IsTouchingLayers(ground) && (GameStatus.Instance.Status == Status.played))
          {            
             anim.SetTrigger("Slide");
             col.enabled = false;
