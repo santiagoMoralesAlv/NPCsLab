@@ -29,6 +29,114 @@ TextureImporter:
   - first:
       213: 584433690339018492
     second: Vark's_Death-Sheet_8
+  - first:
+      213: 2927286010794154055
+    second: Vark's_Death-Sheet_0
+  - first:
+      213: 3832459647228717442
+    second: Vark's_Death-Sheet_1
+  - first:
+      213: 6287314179841695753
+    second: Vark's_Death-Sheet_2
+  - first:
+      213: -8139243893954813668
+    second: Vark's_Death-Sheet_3
+  - first:
+      213: 1218746890327490861
+    second: Vark's_Death-Sheet_4
+  - first:
+      213: 2817660084810804221
+    second: Vark's_Death-Sheet_5
+  - first:
+      213: -4771465682851238518
+    second: Vark's_Death-Sheet_6
+  - first:
+      213: 8777813257560232158
+    second: Vark's_Death-Sheet_7
+  - first:
+      213: -8752822976667867482
+    second: Vark's_Death-Sheet_8
+  - first:
+      213: 5263181698381158545
+    second: Vark's_Death-Sheet_9
+  - first:
+      213: -3473754329771785749
+    second: Vark's_Death-Sheet_10
+  - first:
+      213: 8349865786234774455
+    second: Vark's_Death-Sheet_11
+  - first:
+      213: -7960879988283541355
+    second: Vark's_Death-Sheet_12
+  - first:
+      213: -7027105538933025578
+    second: Vark's_Death-Sheet_13
+  - first:
+      213: -6440789698843311706
+    second: Vark's_Death-Sheet_14
+  - first:
+      213: -6826645257666222672
+    second: Vark's_Death-Sheet_15
+  - first:
+      213: 6583931361728744965
+    second: Vark's_Death-Sheet_16
+  - first:
+      213: -6665856997992262845
+    second: Vark's_Death-Sheet_17
+  - first:
+      213: 2175945992830137303
+    second: Vark's_Death-Sheet_18
+  - first:
+      213: -8026599814779306421
+    second: Vark's_Death-Sheet_19
+  - first:
+      213: -919576794106419996
+    second: Vark's_Death-Sheet_20
+  - first:
+      213: -6618530496947787743
+    second: Vark's_Death-Sheet_21
+  - first:
+      213: -1196508705337475605
+    second: Vark's_Death-Sheet_22
+  - first:
+      213: 8251343843883011414
+    second: Vark's_Death-Sheet_23
+  - first:
+      213: -5999036474346071406
+    second: Vark's_Death-Sheet_24
+  - first:
+      213: -6797639343552933224
+    second: Vark's_Death-Sheet_25
+  - first:
+      213: 3636368153445599769
+    second: Vark's_Death-Sheet_26
+  - first:
+      213: 7903919491185789989
+    second: Vark's_Death-Sheet_27
+  - first:
+      213: -7360621538204207991
+    second: Vark's_Death-Sheet_28
+  - first:
+      213: 3246189927605673824
+    second: Vark's_Death-Sheet_29
+  - first:
+      213: -6038815107979395913
+    second: Vark's_Death-Sheet_30
+  - first:
+      213: 6241878791354954034
+    second: Vark's_Death-Sheet_31
+  - first:
+      213: -9115428270942986491
+    second: Vark's_Death-Sheet_32
+  - first:
+      213: 6308094580219165445
+    second: Vark's_Death-Sheet_33
+  - first:
+      213: 7649646961576443651
+    second: Vark's_Death-Sheet_34
+  - first:
+      213: -4741826209391726822
+    second: Vark's_Death-Sheet_35
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -59,7 +167,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: 2
     mipBias: -100
     wrapU: 1
@@ -167,19 +275,19 @@ TextureImporter:
       name: Vark's_Death-Sheet_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 12
+        y: 12
+        width: 40
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4de5855c333c3b1a0800000000000000
-      internalID: -6794872785650295084
+      spriteID: 7481b5d0e1fcf9820800000000000000
+      internalID: 2927286010794154055
       vertices: []
       indices: 
       edges: []
@@ -188,19 +296,19 @@ TextureImporter:
       name: Vark's_Death-Sheet_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 79
+        y: 15
+        width: 34
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82cfd5d1f547f86d0800000000000000
-      internalID: -2986040076059935704
+      spriteID: 28926117eb1af2530800000000000000
+      internalID: 3832459647228717442
       vertices: []
       indices: 
       edges: []
@@ -209,19 +317,19 @@ TextureImporter:
       name: Vark's_Death-Sheet_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 142
+        y: 16
+        width: 33
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e644a78baa0beaf0800000000000000
-      internalID: -366187212869187863
+      spriteID: 900adb85fe6014750800000000000000
+      internalID: 6287314179841695753
       vertices: []
       indices: 
       edges: []
@@ -230,19 +338,19 @@ TextureImporter:
       name: Vark's_Death-Sheet_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 202
+        y: 9
+        width: 41
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1eb5ecdce639ab840800000000000000
-      internalID: 5240663220507532257
+      spriteID: c116e805dc89b0f80800000000000000
+      internalID: -8139243893954813668
       vertices: []
       indices: 
       edges: []
@@ -251,19 +359,19 @@ TextureImporter:
       name: Vark's_Death-Sheet_4
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 274
+        y: 39
+        width: 23
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82391438c019f2c20800000000000000
-      internalID: 3183922944501977896
+      spriteID: d21051de6dbd9e010800000000000000
+      internalID: 1218746890327490861
       vertices: []
       indices: 
       edges: []
@@ -272,19 +380,19 @@ TextureImporter:
       name: Vark's_Death-Sheet_5
       rect:
         serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 336
+        y: 48
+        width: 26
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c08d3736d6effac10800000000000000
-      internalID: 2067150499759773708
+      spriteID: dfbe1f42be65a1720800000000000000
+      internalID: 2817660084810804221
       vertices: []
       indices: 
       edges: []
@@ -293,19 +401,19 @@ TextureImporter:
       name: Vark's_Death-Sheet_6
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 350
+        y: 38
+        width: 7
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7dbdb89673b39050800000000000000
-      internalID: 5806181666560785790
+      spriteID: a8d6fa3ed3958cdb0800000000000000
+      internalID: -4771465682851238518
       vertices: []
       indices: 
       edges: []
@@ -314,19 +422,19 @@ TextureImporter:
       name: Vark's_Death-Sheet_7
       rect:
         serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 401
+        y: 47
+        width: 11
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e11e7d5bf98cba6e0800000000000000
-      internalID: -1825144635692424930
+      spriteID: ed09791a6ae01d970800000000000000
+      internalID: 8777813257560232158
       vertices: []
       indices: 
       edges: []
@@ -335,19 +443,586 @@ TextureImporter:
       name: Vark's_Death-Sheet_8
       rect:
         serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 416
+        y: 44
+        width: 10
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf68d6b48535c1800800000000000000
-      internalID: 584433690339018492
+      spriteID: 6a6a5dd80e9b78680800000000000000
+      internalID: -8752822976667867482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 22
+        width: 22
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19898508ed39a0940800000000000000
+      internalID: 5263181698381158545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 44
+        width: 10
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be14af087debacfc0800000000000000
+      internalID: -3473754329771785749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 3
+        width: 78
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b326be61bea0e370800000000000000
+      internalID: 8349865786234774455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 24
+        width: 9
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 598f7d644d5458190800000000000000
+      internalID: -7960879988283541355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 30
+        width: 10
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d497b85eb4ba7e90800000000000000
+      internalID: -7027105538933025578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 23
+        width: 18
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a10377c4e7bd96a0800000000000000
+      internalID: -6440789698843311706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 22
+        width: 12
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b52339ae42e241a0800000000000000
+      internalID: -6826645257666222672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 31
+        width: 7
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50e4569b0b2de5b50800000000000000
+      internalID: 6583931361728744965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 33
+        width: 7
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3439e17a06e1e73a0800000000000000
+      internalID: -6665856997992262845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 20
+        width: 12
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d333111a53823e10800000000000000
+      internalID: 2175945992830137303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 32
+        width: 6
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4efcd5cef9cb9090800000000000000
+      internalID: -8026599814779306421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 34
+        width: 7
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e4289327c10d33f0800000000000000
+      internalID: -919576794106419996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 31
+        width: 10
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 128665a54914624a0800000000000000
+      internalID: -6618530496947787743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 5
+        width: 25
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bed72bffba5256fe0800000000000000
+      internalID: -1196508705337475605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 28
+        width: 8
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65dc04e2289a28270800000000000000
+      internalID: 8251343843883011414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 13
+        width: 6
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29a9dff5c142fbca0800000000000000
+      internalID: -5999036474346071406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 24
+        width: 6
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892de40580fe9a1a0800000000000000
+      internalID: -6797639343552933224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 21
+        width: 11
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91a0baab199f67230800000000000000
+      internalID: 3636368153445599769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 19
+        width: 12
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52c4a6586ec50bd60800000000000000
+      internalID: 7903919491185789989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 11
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 984bf3195b1d9d990800000000000000
+      internalID: -7360621538204207991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 3
+        width: 8
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06f13644a88cc0d20800000000000000
+      internalID: 3246189927605673824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 12
+        width: 5
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc30a087a1d13ca0800000000000000
+      internalID: -6038815107979395913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 3
+        width: 8
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 231b1c990bb9f9650800000000000000
+      internalID: 6241878791354954034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 5
+        width: 9
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50fd3ee784e7f7180800000000000000
+      internalID: -9115428270942986491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 7
+        width: 11
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50bb787599ada8750800000000000000
+      internalID: 6308094580219165445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 4
+        width: 11
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30ff8e9c161092a60800000000000000
+      internalID: 7649646961576443651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vark's_Death-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 3
+        width: 7
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1fa1929f26a13eb0800000000000000
+      internalID: -4741826209391726822
       vertices: []
       indices: 
       edges: []

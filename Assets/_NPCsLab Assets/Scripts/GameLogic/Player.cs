@@ -28,7 +28,7 @@ namespace GameLogic
         private GameObject i_character;
         public void NewCharacter(int index) {
             Destroy(this.i_character);
-            i_character = Instantiate(characterPreFab[index], new Vector3(7f, 7f, 0.0f), Quaternion.identity);
+            i_character = Instantiate(characterPreFab[index], new Vector3(2f, 1f, 0.0f), Quaternion.identity);
         }
     }
 
