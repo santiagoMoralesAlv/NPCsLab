@@ -63,8 +63,10 @@ namespace GameLogic.Levels
         private void InstanceFirtsModules()
         {
             modules = new Queue<GameObject>();
+            
             modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0")
-                .WithPlatforms(plataformNum).Build());
+                .WithPlatforms("tutorial").Build());
+                
             for (int i = 0; i < 25; i++)
             {
                 InstanceModule();
@@ -93,7 +95,7 @@ namespace GameLogic.Levels
         {
             float lastModule = modules.Last().transform.localPosition.x;
             modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0")
-                .WithPlatforms(plataformNum).WithPickUps(0).WithHazards(0).Build());
+                .WithPlatforms(plataformNum).Build());
 
             modules.Last().transform.localPosition = new Vector3(lastModule + moduleWidth, 0, 0);
         }

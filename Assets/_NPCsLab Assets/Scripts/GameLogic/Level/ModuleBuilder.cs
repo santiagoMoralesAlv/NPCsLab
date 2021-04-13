@@ -42,21 +42,16 @@ namespace GameLogic.Levels
             return this;
         }
         
+        public ModuleBuilder WithPlatforms(string platformName)
+        {
+            _module.Platforms = new GameObject[1];
+            _module.Platforms[0] = platformFac.InstantiateEntity(platformName, moduleTf);
+            return this;
+        }
+        
         public ModuleBuilder WithPlatforms(int amount)
         {
             _module.Platforms = platformFac.InstantiateRandomEntitiesArray(moduleTf, _module, amount, false);
-            return this;
-        }
-        
-        public ModuleBuilder WithPickUps(int amount)
-        {
-            _module.Pickups = pickupFac.InstantiateRandomEntitiesArray(moduleTf, _module, amount, true);
-            return this;
-        }
-        
-        public ModuleBuilder WithHazards(int amount)
-        {
-            _module.Hazards = hazardFac.InstantiateRandomEntitiesArray(moduleTf, _module, amount, true);
             return this;
         }
         
