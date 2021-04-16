@@ -27,7 +27,7 @@ namespace GameLogic.Utilities
             }
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
+       /* private void OnCollisionEnter2D(Collision2D other)
         {
             
             
@@ -38,7 +38,7 @@ namespace GameLogic.Utilities
                 player = other.gameObject;
               
             }
-        }
+        }*/
         IEnumerator dead()
         {
             yield return new WaitForSeconds(0.15f);
