@@ -66,7 +66,10 @@ namespace GameLogic.Levels
             
             modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0")
                 .WithPlatforms("tutorial").Build());
-                
+
+            /*modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0")
+                .WithPlatforms("tutorial 1").Build());*/
+
             for (int i = 0; i < 25; i++)
             {
                 InstanceModule();

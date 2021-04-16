@@ -16,12 +16,14 @@ namespace GameLogic.Characters
         public static Character Instance => instance;
         private Animator m_animator;
         private Rigidbody2D m_rg;
+        [SerializeField] GameObject shieldPlayer;
+
+
 
         private void Awake()
         {
             //Singleton initialization
             instance = this;
-
             m_animator = this.GetComponent<Animator>();
             m_rg = this.GetComponent<Rigidbody2D>();
             m_rg.simulated = false;
@@ -100,45 +102,30 @@ namespace GameLogic.Characters
         #region basicFuntions
 
         private bool isAlive;
-        public bool isShieldActive;
-        public bool shieldUsed;
+       
         public bool IsAlive => isAlive;
+
+        public void ShieldActive()
+        {
+            shieldPlayer.SetActive(true);
+        }
 
         public void WakeUp()
         {
             m_animator = this.GetComponent<Animator>();
             isAlive = true;
-            isShieldActive = false;
-            shieldUsed = false;
             m_rg.simulated = true;
 
             m_animator.SetTrigger("WakeUp"); //Notify a new state transition
         }
         public void Kill()
-        {
-            if (isShieldActive == true)
-            {
-                isShieldActive = false;
-                shieldUsed = true;
-                
-            }
-           else if (isShieldActive == false)
-            {
-                isAlive = false;
-                shieldUsed = false;
-                m_rg.simulated = false;
-
-                m_animator.SetTrigger("Dead"); //Notify a new state transition
-
-                Destroy(this.gameObject, .3f);
-                GameStatus.Instance.Stop();
-            }
-
-        }
-        
-
-
-
+        {   
+            isAlive = false;                
+            m_rg.simulated = false;
+            m_animator.SetTrigger("Dead"); //Notify a new state transition
+            Destroy(this.gameObject, .3f);
+            GameStatus.Instance.Stop();
+        }   
         #endregion
     }
 }
