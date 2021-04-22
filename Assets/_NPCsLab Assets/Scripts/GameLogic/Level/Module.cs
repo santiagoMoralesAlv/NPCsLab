@@ -5,10 +5,13 @@ using UnityEngine;
 
 namespace GameLogic.Levels
 {
-    public class Module : MonoBehaviour
+    public class Module : MonoBehaviour, ModuleTransform
     {
-        private float widthSize, heightSize;
+        [SerializeField]
+        private float widthSize=35.99f, heightSize=16.46f;
 
+        private float position;
+        
         public float HeightSize
         {
             get => heightSize;
@@ -19,6 +22,16 @@ namespace GameLogic.Levels
         {
             get => widthSize;
             set => widthSize = value;
+        }
+        
+        public float Position
+        {
+            get => position;
+            set
+            {
+                position = value;
+                transform.localPosition = new Vector3(value,0,0);
+            }
         }
 
         private GameObject escenary;

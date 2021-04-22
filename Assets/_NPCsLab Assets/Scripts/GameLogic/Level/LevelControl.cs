@@ -18,7 +18,7 @@ namespace GameLogic.Levels
         [SerializeField] private ModuleBuilder moduleBuilder;
 
         [SerializeField] private float velocity, timeRunning;
-        [SerializeField] private int plataformNum;
+        [SerializeField] private int numOfModulesInGame;
         private int passedModules;
         private int coins;
         public int PassedModules => passedModules;
@@ -52,26 +52,13 @@ namespace GameLogic.Levels
             }
         }
 
-        [Space(10)] [SerializeField] private float moduleWidth, moduleHeight;
-        private Queue<GameObject> modules;
+        private Queue<Module> modules;
 
         public void CollectCoin()
         {
             coins++;
         }
-        
-        private void InstanceFirtsModules()
-        {
-            modules = new Queue<GameObject>();
-            
-            modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0")
-                .WithPlatforms("tutorial").Build());
-                
-            for (int i = 0; i < 25; i++)
-            {
-                InstanceModule();
-            }
-        }
+
 
         void FixedUpdate()
         {
@@ -82,22 +69,46 @@ namespace GameLogic.Levels
                     module.transform.Translate(Vector3.left * (Time.fixedDeltaTime * velocity), Space.Self);
                 }
 
-                if (modules.Peek().transform.position.x <= moduleWidth * -2)
+                if (modules.Peek().transform.position.x <= -40)
                 {
-                    modules.Dequeue().GetComponent<Module>().DeactiveParts();
-                    InstanceModule();
+                    modules.Dequeue().DeactiveParts();
+                    InstanceRandomModule();
                     passedModules++;
                 }
             }
         }
 
-        private void InstanceModule()
+        private void InstanceFirtsModules()
         {
-            float lastModule = modules.Last().transform.localPosition.x;
-            modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0")
-                .WithPlatforms(plataformNum).Build());
+            modules = new Queue<Module>();
+            InstanceSpecificModule("tutorial");
+            InstanceSpecificModule("tutorial");
+            for (int i = 0; i < numOfModulesInGame; i++)
+            {
+                InstanceRandomModule();
+            }
+        }
 
-            modules.Last().transform.localPosition = new Vector3(lastModule + moduleWidth, 0, 0);
+        private void InstanceSpecificModule(string moduleName)
+        {
+            modules.Enqueue(moduleBuilder.WithPlatforms(moduleName, transform, GetLastModule()).Build());
+        }
+        
+        private void InstanceRandomModule()
+        {
+            modules.Enqueue(moduleBuilder.WithPlatforms(transform, GetLastModule()).Build());
+        }
+
+        private ModuleTransform GetLastModule()
+        {
+            if (modules.Count == 0)
+            {
+                return new NullModule();
+            }
+            else
+            {
+                return modules.Last();
+            }
         }
     }
 }

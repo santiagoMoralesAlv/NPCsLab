@@ -65,7 +65,6 @@ namespace GameLogic
             }
             else
             {
-                Debug.LogError("No se encontro el id en el diccionario");
                 throw new Exception("No se encontro el id en el diccionario");
             }
             

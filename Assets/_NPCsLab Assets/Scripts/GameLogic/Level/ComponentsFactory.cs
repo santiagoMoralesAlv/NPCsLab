@@ -39,6 +39,7 @@ namespace GameLogic.Levels
             ConfigEntity(entity);
             return entity;
         }
+        
 
         [SerializeField] private float xMargin, yMargin;
 
@@ -67,6 +68,8 @@ namespace GameLogic.Levels
 
             return entities;
         }
+        
+        
 
         /// <summary>
         /// Function to initialize the entity and end the build

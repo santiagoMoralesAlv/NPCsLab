@@ -10,55 +10,43 @@ namespace GameLogic.Levels
     [CreateAssetMenu(fileName = "Builder", menuName = "Configs/Module Builder", order = 1)]
     public class ModuleBuilder : ScriptableObject
     {
-        private Module _module;
-        private Transform moduleTf;
-        [SerializeField] private ComponentsFactory moduleFactory, escenaryFac, platformFac, pickupFac, hazardFac;
+        [SerializeField] private ComponentsFactory platformFac;
         
         
-        private GameObject escenary, platform, pickup, hazard;
+        private GameObject platform, pickup, hazard;
 
+        private Module _module;
 
         public void Init()
-        {
-            moduleFactory.Init();     
-            escenaryFac.Init();
-            platformFac.Init();            
-            pickupFac.Init();
-            hazardFac.Init();
+        { 
+            platformFac.Init();   
         }
         
-        public ModuleBuilder WithBase(Transform tf, float widthSize, float heightSize)
+        public ModuleBuilder WithPlatforms(string platformName, Transform tf, ModuleTransform lastModule)
         {
-            _module = moduleFactory.InstantiateEntity(tf).GetComponent<Module>();
-            moduleTf = _module.GetComponent<Transform>();
-            _module.WidthSize = widthSize;
-            _module.HeightSize = heightSize;
-            return this;
-        }
-        
-        public ModuleBuilder WithEscenary(string levelName)
-        {
-            _module.Escenary = escenaryFac.InstantiateEntity(levelName, moduleTf);
-            return this;
-        }
-        
-        public ModuleBuilder WithPlatforms(string platformName)
-        {
+            _module =  platformFac.InstantiateEntity(platformName, tf).GetComponent<Module>();
+            
+            _module.Position = lastModule.Position + lastModule.WidthSize;
             _module.Platforms = new GameObject[1];
-            _module.Platforms[0] = platformFac.InstantiateEntity(platformName, moduleTf);
+            _module.Platforms[0] = _module.gameObject;
             return this;
         }
         
-        public ModuleBuilder WithPlatforms(int amount)
+        public ModuleBuilder WithPlatforms(Transform tf, ModuleTransform lastModule)
         {
-            _module.Platforms = platformFac.InstantiateRandomEntitiesArray(moduleTf, _module, amount, false);
+            _module =  platformFac.InstantiateEntity(tf).GetComponent<Module>();
+            
+            _module.Position = lastModule.Position + lastModule.WidthSize;
+            _module.Platforms = new GameObject[1];
+            _module.Platforms[0] = _module.gameObject;
+            
             return this;
         }
         
-        public GameObject Build()
+        public Module Build()
         {
             _module.ActiveParts();
-            return _module.gameObject;
+            return _module;
         }
 
         
