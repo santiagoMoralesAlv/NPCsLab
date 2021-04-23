@@ -58,7 +58,8 @@ namespace GameLogic.Levels
         {
             coins++;
         }
-
+        
+        
 
         void FixedUpdate()
         {
@@ -83,6 +84,13 @@ namespace GameLogic.Levels
             modules = new Queue<Module>();
             InstanceSpecificModule("tutorial");
             InstanceSpecificModule("tutorial");
+            InstanceSpecificModule("tutorial1");
+            InstanceSpecificModule("tutorial1");
+            InstanceSpecificModule("tutorial");
+            InstanceSpecificModule("tutorial2");
+            InstanceSpecificModule("tutorial2");
+            InstanceSpecificModule("tutorial");
+
             for (int i = 0; i < numOfModulesInGame; i++)
             {
                 InstanceRandomModule();

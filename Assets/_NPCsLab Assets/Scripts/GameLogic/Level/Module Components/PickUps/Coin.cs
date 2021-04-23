@@ -7,12 +7,17 @@ namespace GameLogic.Levels
 {
     public class Coin : MonoBehaviour
     {
+        public GameObject coinSound;
+        public GameObject coinParticles;
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
             {
+                Debug.Log("Si toca escudo");
                 LevelControl.Instance.CollectCoin();
-                gameObject.SetActive(false);
+                Instantiate(coinSound, this.transform.position, coinParticles.transform.rotation);
+                this.gameObject.SetActive(false);
+
             }
         }
     }

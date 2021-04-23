@@ -27,18 +27,6 @@ namespace GameLogic.Utilities
             }
         }
 
-       /* private void OnCollisionEnter2D(Collision2D other)
-        {
-            
-            
-            if (other.gameObject.CompareTag("Player"))
-            {
-                bombAnimator.SetTrigger("Explosion");
-                StartCoroutine("dead");
-                player = other.gameObject;
-              
-            }
-        }*/
         IEnumerator dead()
         {
             yield return new WaitForSeconds(0.15f);

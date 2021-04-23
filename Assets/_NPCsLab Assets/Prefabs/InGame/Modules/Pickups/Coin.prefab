@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3cb96a077aebd147b76cab09932e2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinSound: {fileID: 2311832576711211461, guid: a60c2ece08617ff4f8abf808eab1c66d, type: 3}
+  coinParticles: {fileID: 7432205796333050870, guid: 0640e759f063ae44d911b546f1409b52, type: 3}
 --- !u!95 &1622726054927031876
 Animator:
   serializedVersion: 3
