@@ -26,7 +26,11 @@ namespace GameLogic.Levels
         
         public float Position
         {
-            get => position;
+            get
+            {
+                position = transform.localPosition.x;
+                return position;
+            }
             set
             {
                 position = value;

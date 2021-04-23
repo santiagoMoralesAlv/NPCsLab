@@ -13,22 +13,32 @@ namespace GameLogic
     public class PrefabPool : ScriptableObject
     {
         // <summary> Prefab </summary>
-        [SerializeField] private GameObject[] prefabs;
+        [SerializeField] private GameObject[] specifyPrefabs, randomPrefabs;
+        private Dictionary<string, GameObject> specifyPrefabsDictionary, randomPrefabsDictionary;
+        
+        private Dictionary<string, List<GameObject>> randomInstancesDictionary;
+        private List<GameObject> specifyInstancesList;
 
-
-        private List<GameObject> prefabList ;
-
-
-        private Dictionary<string, GameObject> prefabsDictionary;
 
         public void Init()
         {
-            prefabList = new List<GameObject>();
-            prefabsDictionary = new Dictionary<string, GameObject>();
-            foreach (var prefab in prefabs)
+            specifyPrefabsDictionary = new Dictionary<string, GameObject>();
+            foreach (var prefab in specifyPrefabs)
             {
-                prefabsDictionary.Add(prefab.name,prefab);
+                specifyPrefabsDictionary.Add(prefab.name,prefab);
             }
+            randomPrefabsDictionary = new Dictionary<string, GameObject>();
+            foreach (var prefab in randomPrefabs)
+            {
+                randomPrefabsDictionary.Add(prefab.name,prefab);
+            }
+            
+            randomInstancesDictionary = new Dictionary<string, List<GameObject>>();
+            foreach (var prefab in randomPrefabs)
+            {
+                randomInstancesDictionary.Add(prefab.name, new List<GameObject>());
+            }
+            specifyInstancesList = new List<GameObject>();
         }
 
         /// <summary>
@@ -39,25 +49,26 @@ namespace GameLogic
         public GameObject GetEntityByName(string t_name, Transform tf)
         {
             //Search a instance inactive to identify a entity without use
-            for (int i = 0; i < prefabList.Count; i++)
+
+            foreach (var instance in specifyInstancesList)
             {
-                if (!prefabList[i].activeInHierarchy && prefabList[i].name == t_name)
+                if (!instance.activeInHierarchy && instance.name == t_name)
                 {
-                    prefabList[i].transform.SetParent(tf);
-                    prefabList[i].transform.localPosition = Vector3.zero;
-                    prefabList[i].transform.localRotation = Quaternion.identity;
-                    prefabList[i].SetActive(true);
-                    return prefabList[i]; //Break the function
+                    instance.transform.SetParent(tf);
+                    instance.transform.localPosition = Vector3.zero;
+                    instance.transform.localRotation = Quaternion.identity;
+                    instance.SetActive(true);
+                    return instance; //Break the function
                 }
             }
 
             //if still in the function, then, it create one
 
             GameObject prefabToInstantiate;
-            if (prefabsDictionary.TryGetValue(t_name, out prefabToInstantiate))
+            if (specifyPrefabsDictionary.TryGetValue(t_name, out prefabToInstantiate))
             {
                 GameObject t_entity = Instantiate(prefabToInstantiate, tf);
-                prefabList.Add(t_entity);
+                specifyInstancesList.Add(t_entity);
                 t_entity.SetActive(true);
                 t_entity.name = t_name;
                 
@@ -78,25 +89,35 @@ namespace GameLogic
         /// <returns>instance</returns>
         public GameObject GetRandomEntity(Transform tf)
         {
-            //Search a instance inactive to identify a entity without use
-            for (int i = 0; i < prefabList.Count; i++)
+            GameObject prefabToInstantiate;
+            string prefabName = randomPrefabsDictionary.Keys.ElementAt(UnityEngine.Random.Range(0, randomPrefabsDictionary.Count));
+            
+            foreach (var instance in randomInstancesDictionary[prefabName])
             {
-                if (!prefabList[i].activeInHierarchy)
+                if (!instance.activeInHierarchy)
                 {
-                    prefabList[i].transform.SetParent(tf);
-                    prefabList[i].transform.localPosition = Vector3.zero;
-                    prefabList[i].transform.localRotation = Quaternion.identity;
-                    prefabList[i].SetActive(true);
-                    return prefabList[i]; //Break the function
+                    instance.transform.SetParent(tf);
+                    instance.transform.localPosition = Vector3.zero;
+                    instance.transform.localRotation = Quaternion.identity;
+                    instance.SetActive(true);
+                    return instance; //Break the function
                 }
             }
+            
+            if (randomPrefabsDictionary.TryGetValue(prefabName, out prefabToInstantiate))
+            {
+                GameObject t_entity = Instantiate(prefabToInstantiate, tf);
+                randomInstancesDictionary[prefabName].Add(t_entity);
+                t_entity.SetActive(true);
+                t_entity.name = prefabName;
+                
+                return t_entity;
+            }
+            else
+            {
+                throw new Exception("Diccionario vacio");
+            }
 
-            //if still in the function, then, it create one
-            GameObject t_entity = Instantiate(prefabsDictionary.ElementAt(UnityEngine.Random.Range(0, prefabsDictionary.Count)).Value, tf);
-            prefabList.Add(t_entity);
-            t_entity.SetActive(true);
-
-            return t_entity;
         }
     }
 }

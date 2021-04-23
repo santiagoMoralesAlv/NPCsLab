@@ -91,12 +91,12 @@ namespace GameLogic.Levels
 
         private void InstanceSpecificModule(string moduleName)
         {
-            modules.Enqueue(moduleBuilder.WithPlatforms(moduleName, transform, GetLastModule()).Build());
+            modules.Enqueue(moduleBuilder.WithCompletedModule(moduleName, transform, GetLastModule()).Build());
         }
         
         private void InstanceRandomModule()
         {
-            modules.Enqueue(moduleBuilder.WithPlatforms(transform, GetLastModule()).Build());
+            modules.Enqueue(moduleBuilder.WithCompletedModule(transform, GetLastModule()).Build());
         }
 
         private ModuleTransform GetLastModule()

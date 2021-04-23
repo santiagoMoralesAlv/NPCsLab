@@ -551,7 +551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3765006994664732859, guid: e6778c80354180b409d4960bbbffb317, type: 3}
       propertyPath: numOfModulesInGame
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6778c80354180b409d4960bbbffb317, type: 3}
@@ -624,15 +624,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5367510069984762853, guid: 867988c05164f7a4c8ebe8a9016eea12, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.1984141
+      value: 1.6236113
       objectReference: {fileID: 0}
     - target: {fileID: 5367510069984762853, guid: 867988c05164f7a4c8ebe8a9016eea12, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.8493187
+      value: 1.8453693
       objectReference: {fileID: 0}
     - target: {fileID: 5367510069984762853, guid: 867988c05164f7a4c8ebe8a9016eea12, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.3154
+      value: 3.1369038
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 867988c05164f7a4c8ebe8a9016eea12, type: 3}

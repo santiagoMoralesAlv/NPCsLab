@@ -22,23 +22,19 @@ namespace GameLogic.Levels
             platformFac.Init();   
         }
         
-        public ModuleBuilder WithPlatforms(string platformName, Transform tf, ModuleTransform lastModule)
+        public ModuleBuilder WithCompletedModule(string platformName, Transform tf, ModuleTransform lastModule)
         {
             _module =  platformFac.InstantiateEntity(platformName, tf).GetComponent<Module>();
             
             _module.Position = lastModule.Position + lastModule.WidthSize;
-            _module.Platforms = new GameObject[1];
-            _module.Platforms[0] = _module.gameObject;
             return this;
         }
         
-        public ModuleBuilder WithPlatforms(Transform tf, ModuleTransform lastModule)
+        public ModuleBuilder WithCompletedModule(Transform tf, ModuleTransform lastModule)
         {
             _module =  platformFac.InstantiateEntity(tf).GetComponent<Module>();
             
             _module.Position = lastModule.Position + lastModule.WidthSize;
-            _module.Platforms = new GameObject[1];
-            _module.Platforms[0] = _module.gameObject;
             
             return this;
         }
