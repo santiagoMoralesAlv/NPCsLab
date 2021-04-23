@@ -11,8 +11,9 @@ namespace GameLogic.Levels
         {
             if (other.CompareTag("Player"))
             {
+                Debug.Log("Si toca escudo");
                 LevelControl.Instance.CollectCoin();
-                gameObject.SetActive(false);
+                this.gameObject.SetActive(false);
             }
         }
     }
