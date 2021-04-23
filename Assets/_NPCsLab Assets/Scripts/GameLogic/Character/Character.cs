@@ -115,6 +115,7 @@ namespace GameLogic.Characters
             m_animator = this.GetComponent<Animator>();
             isAlive = true;
             m_rg.simulated = true;
+            this.GetComponent<AudioSource>().Play();
 
             m_animator.SetTrigger("WakeUp"); //Notify a new state transition
         }

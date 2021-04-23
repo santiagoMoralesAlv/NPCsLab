@@ -7,6 +7,9 @@ using Core;
 [DefaultExecutionOrder(-1)]
 public class CharacterMov : Singleton<CharacterMov>
 {
+    private static CharacterMov instance;
+    public static CharacterMov Instance => instance;
+
     #region Events
     public delegate void StartTouch(Vector2 position, float time);
     public event StartTouch OnStartTouch;
@@ -20,17 +23,24 @@ public class CharacterMov : Singleton<CharacterMov>
 
     private @CharacterMovInput playerControls;
 
+
     public float crouchingSpeed = 4f;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Collider2D col;
     private Animator anim;
+    public int jumping;
+    public int sliding;
+
 
     private Vector3 initialPosition;
 
     [SerializeField] private BoxCollider2D slideColl;
     private void Awake()
     {
+        instance = this;
+        jumping = 0;
+        sliding = 0;
         rb = GetComponent<Rigidbody2D>();
         playerControls = new @CharacterMovInput();
         col = GetComponent<Collider2D>();
@@ -80,8 +90,10 @@ public class CharacterMov : Singleton<CharacterMov>
     {
         if (val == 1 && col.IsTouchingLayers(ground) && (GameStatus.Instance.Status == Status.played))
         {
+            this.GetComponent<AudioSource>().Stop();
             rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
             anim.SetTrigger("Jump");
+            jumping += 1;
             StartCoroutine("stopJump");
         }
     }
@@ -90,10 +102,12 @@ public class CharacterMov : Singleton<CharacterMov>
     {
 
          if (col.IsTouchingLayers(ground) && (GameStatus.Instance.Status == Status.played))
-         {            
+         {        
+            this.GetComponent<AudioSource>().Stop();
             anim.SetTrigger("Slide");
             col.enabled = false;
             slideColl.enabled=true;
+            sliding += 1;
             //rb.AddForce(new Vector2(slideSpeed,0),ForceMode2D.Impulse);
             StartCoroutine("stopSlide");
         }
@@ -101,7 +115,9 @@ public class CharacterMov : Singleton<CharacterMov>
     }
     IEnumerator stopJump()
     {
+
         yield return new WaitForSeconds(0.7f);
+        this.GetComponent<AudioSource>().Play();
         anim.Play("PlayerRun");
         anim.SetBool("Jump", false);
         
@@ -110,10 +126,11 @@ public class CharacterMov : Singleton<CharacterMov>
     {
         yield return new WaitForSeconds(0.55f);
         anim.Play("PlayerRun");
+        this.GetComponent<AudioSource>().Play();
+
         //anim.SetBool("Slide", false);
         col.enabled = true;
         slideColl.enabled = false;
-
         /*yield return new WaitForSeconds(0.6f);
         this.transform.position = initialPosition;*/
 

@@ -59,22 +59,7 @@ namespace GameLogic.Levels
             coins++;
         }
         
-        private void InstanceFirtsModules()
-        {
-            modules = new Queue<GameObject>();
-            
-            modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0")
-                .WithPlatforms("tutorial").Build());
-
-            /*modules.Enqueue(moduleBuilder.WithBase(transform, moduleWidth, moduleHeight).WithEscenary("level0")
-                .WithPlatforms("tutorial 1").Build());*/
-
-            for (int i = 0; i < 25; i++)
-            {
-                InstanceModule();
-            }
-        }
-
+        
 
         void FixedUpdate()
         {
@@ -99,6 +84,13 @@ namespace GameLogic.Levels
             modules = new Queue<Module>();
             InstanceSpecificModule("tutorial");
             InstanceSpecificModule("tutorial");
+            InstanceSpecificModule("tutorial1");
+            InstanceSpecificModule("tutorial1");
+            InstanceSpecificModule("tutorial");
+            InstanceSpecificModule("tutorial2");
+            InstanceSpecificModule("tutorial2");
+            InstanceSpecificModule("tutorial");
+
             for (int i = 0; i < numOfModulesInGame; i++)
             {
                 InstanceRandomModule();
