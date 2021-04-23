@@ -128,7 +128,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5368260631016424121, guid: 16dc55290c45c50479bf29ca8e678e1e, type: 3}
   m_PrefabInstance: {fileID: 5368260632840382891}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &335649068
+--- !u!114 &335649072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -599,6 +599,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EscenaryBase
       objectReference: {fileID: 0}
+    - target: {fileID: 5367510068479555402, guid: 867988c05164f7a4c8ebe8a9016eea12, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5367510068479555403, guid: 867988c05164f7a4c8ebe8a9016eea12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -845,6 +849,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1413326393}
+    - target: {fileID: 8516314930099996830, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_Text
+      value: Dummie
+      objectReference: {fileID: 0}
     - target: {fileID: 8516314930278115528, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -895,7 +903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8516314930335141726, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516314930390990231, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
       propertyPath: m_UiScaleMode
@@ -971,7 +979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8516314930598917008, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8516314930697907207, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -999,7 +1007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8516314930926060432, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516314930931007333, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
       propertyPath: m_PointerBehavior

@@ -11,13 +11,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vark Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5411687583155107589, guid: dd5af14ea2c8d25459c1124fde628d40, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4f4514f757685c74fa06aa99035daa76, type: 2}
     - target: {fileID: 5411687583155107590, guid: dd5af14ea2c8d25459c1124fde628d40, type: 3}
       propertyPath: m_Color.r
-      value: 0.1462264
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5411687583155107590, guid: dd5af14ea2c8d25459c1124fde628d40, type: 3}
       propertyPath: m_Color.g
-      value: 0.8434748
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5411687583155107590, guid: dd5af14ea2c8d25459c1124fde628d40, type: 3}
       propertyPath: m_Color.b
