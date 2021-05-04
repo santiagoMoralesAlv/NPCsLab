@@ -32,12 +32,14 @@ namespace GameLogic.Levels
 
             coins = 0;
             moduleBuilder.Init();
+            
             GameStatus.Instance.e_NewStatus += CheckGameStatus;
         }
 
         private void Start()
         {
             modules = new Queue<Module>();
+            LevelControl.Instance.InstanceSpecificModule("tutorial");
         }
 
         public void CheckGameStatus(Status _status, bool inTransition)

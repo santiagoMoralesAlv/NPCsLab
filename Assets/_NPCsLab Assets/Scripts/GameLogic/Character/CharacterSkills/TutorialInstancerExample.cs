@@ -14,8 +14,6 @@ public class TutorialInstancerExample : MonoBehaviour
 
     public void RequestInstanceModules()
     {
-        
-        LevelControl.Instance.InstanceSpecificModule("tutorial");
         LevelControl.Instance.InstanceSpecificModule("tutorial");
         LevelControl.Instance.InstanceSpecificModule("tutorial1");
         LevelControl.Instance.InstanceSpecificModule("tutorial1");
