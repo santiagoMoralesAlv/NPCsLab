@@ -32,8 +32,12 @@ namespace GameLogic.Levels
 
             coins = 0;
             moduleBuilder.Init();
-            InstanceFirtsModules();
             GameStatus.Instance.e_NewStatus += CheckGameStatus;
+        }
+
+        private void Start()
+        {
+            modules = new Queue<Module>();
         }
 
         public void CheckGameStatus(Status _status, bool inTransition)
@@ -41,6 +45,7 @@ namespace GameLogic.Levels
             if (_status == Status.played && inTransition)
             {
                 Character.Instance.WakeUp();
+                InstanceFirtsModules();
             }
         }
 
@@ -79,25 +84,17 @@ namespace GameLogic.Levels
             }
         }
 
+        public Action EInit;
         private void InstanceFirtsModules()
         {
-            modules = new Queue<Module>();
-            InstanceSpecificModule("tutorial");
-            InstanceSpecificModule("tutorial");
-            InstanceSpecificModule("tutorial1");
-            InstanceSpecificModule("tutorial1");
-            InstanceSpecificModule("tutorial");
-            InstanceSpecificModule("tutorial2");
-            InstanceSpecificModule("tutorial2");
-            InstanceSpecificModule("tutorial");
-
+            (EInit)?.Invoke();
             for (int i = 0; i < numOfModulesInGame; i++)
             {
                 InstanceRandomModule();
             }
         }
 
-        private void InstanceSpecificModule(string moduleName)
+        public void InstanceSpecificModule(string moduleName)
         {
             modules.Enqueue(moduleBuilder.WithCompletedModule(moduleName, transform, GetLastModule()).Build());
         }
