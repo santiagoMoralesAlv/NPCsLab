@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Core;
 using GameLogic.Characters;
+using GameLogic.Levels;
 
 
 namespace GameLogic.Levels
@@ -18,14 +19,16 @@ namespace GameLogic.Levels
         [SerializeField] private float nextTextEvery;
 
         public void Awake()
-        {            
+        {
+           // PlayerPrefs.SetInt("TutorialHasPlayed", 0);
             textComp = GetComponent<Text>();
             nextTextCounter = 2 * nextTextEvery;
         }
 
+       
         public void Update()
         {
-            if ((GameStatus.Instance.Status == Status.played))
+            if ((GameStatus.Instance.Status == Status.played) && PlayerPrefs.GetInt("TutorialHasPlayed", 0) <= 0) 
             {
                 gameObject.SetActive(true);
                 nextTextCounter -= Time.deltaTime/1.5f ;
@@ -47,16 +50,32 @@ namespace GameLogic.Levels
                     case 4:
                         if (nextTextCounter < nextTextEvery)
                         {
+                            PlayerPrefs.SetInt("TutorialHasPlayed", 1);
                             gameObject.SetActive(false);
                         }
                         break;
                 }
+
+            }
+            else if ((GameStatus.Instance.Status == Status.played) && PlayerPrefs.GetInt("TutorialHasPlayed", 0) ==1)
+            {
+                gameObject.SetActive(true);
+                textComp.text = "¿De nuevo en el principio Vark?, concentrate mas, asi nunca saldras de aqui...";
+                StartCoroutine("troll");
             }
 
 
         }
 
-       
+        IEnumerator troll()
+        {
+            yield return new WaitForSeconds(5f);
+            gameObject.SetActive(false);
+               
+        }
+
+
+
         public string StartingTutorial()
         {
 
@@ -82,12 +101,12 @@ namespace GameLogic.Levels
 
             if (nextTextCounter < 2 * nextTextEvery && nextTextCounter >= nextTextEvery)
             {
-                text = "Para saltar desliza hacia arriba o presiona 'espacio'";
+                text = "Para saltar desliza hacia arriba";
                 cumplido = false;
             }
             else if (nextTextCounter < nextTextEvery && cumplido == false)
             {
-                text = "Esquiva estos obstaculos";
+                text = "Esquiva estos obstaculos y acostumbrate al salto";
                 nextTextCounter = nextTextEvery - 0.1f;
                  if (CharacterMov.Instance.jumping >= 10 )
                  {
@@ -112,7 +131,7 @@ namespace GameLogic.Levels
         {
             if (nextTextCounter < 2 * nextTextEvery && nextTextCounter >= nextTextEvery)
             {
-                text = "Ahora tendras que deslizarte, para eso desliza hacia abajo o presiona s";
+                text = "Ahora tendras que deslizarte, para eso desliza hacia abajo";
                 cumplido = false;
             }
             else if (nextTextCounter < nextTextEvery && cumplido == false)
@@ -155,6 +174,7 @@ namespace GameLogic.Levels
             {
                 state = 4;
                 PassText();
+
             }
             return text;
         }
