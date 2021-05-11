@@ -531,6 +531,38 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1413326393}
+    - target: {fileID: 8516314930548533076, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b2fd7055df9d28d4e9e51ad10766889f, type: 3}
+    - target: {fileID: 8516314930548533076, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930548533076, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.84865737
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930548533076, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_Color.b
+      value: 0.26254895
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930548533077, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0.3207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930548533077, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.2515503
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930548533077, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0.107422575
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930548533078, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 102
+      objectReference: {fileID: 0}
     - target: {fileID: 8516314930598917007, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 1.0999756
@@ -568,6 +600,50 @@ PrefabInstance:
       value: 0.9844444
       objectReference: {fileID: 0}
     - target: {fileID: 8516314930697907208, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930783809847, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0.20754719
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930783809847, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.17377768
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930783809847, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0.04601282
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930783809848, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -746
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930783809848, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930783809850, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b2fd7055df9d28d4e9e51ad10766889f, type: 3}
+    - target: {fileID: 8516314930783809850, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_Text
+      value: Distance
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930783809850, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930783809850, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930783809850, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516314930926060432, guid: cb9238667eef3174b8678cb63e316d1f, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
