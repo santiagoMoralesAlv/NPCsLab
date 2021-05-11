@@ -40,6 +40,18 @@ namespace GameLogic.Levels
         {
             modules = new Queue<Module>();
             LevelControl.Instance.InstanceSpecificModule("tutorial");
+            if (PlayerPrefs.GetInt("TutorialHasPlayed", 0) <= 0)
+            {
+                LevelControl.Instance.InstanceSpecificModule("tutorial");
+                LevelControl.Instance.InstanceSpecificModule("tutorial1");
+                LevelControl.Instance.InstanceSpecificModule("tutorial1");
+                LevelControl.Instance.InstanceSpecificModule("tutorial");
+                LevelControl.Instance.InstanceSpecificModule("tutorial2");
+                LevelControl.Instance.InstanceSpecificModule("tutorial2");
+                LevelControl.Instance.InstanceSpecificModule("tutorial");
+                LevelControl.Instance.InstanceSpecificModule("tutorial");
+            }
+
         }
 
         public void CheckGameStatus(Status _status, bool inTransition)

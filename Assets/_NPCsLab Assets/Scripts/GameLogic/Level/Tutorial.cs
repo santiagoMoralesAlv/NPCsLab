@@ -20,7 +20,7 @@ namespace GameLogic.Levels
 
         public void Awake()
         {
-           // PlayerPrefs.SetInt("TutorialHasPlayed", 0);
+          // PlayerPrefs.SetInt("TutorialHasPlayed", 0);
             textComp = GetComponent<Text>();
             nextTextCounter = 2 * nextTextEvery;
         }
@@ -161,14 +161,10 @@ namespace GameLogic.Levels
             if (nextTextCounter < 2 * nextTextEvery && nextTextCounter >= nextTextEvery)
             {
                 text = "Ahora ve a buscar a tu familia, el doctor estara feliz por ti";
-                cumplido = false;
-            }
-            else if (nextTextCounter < nextTextEvery && cumplido == false)
-            {
-                text = "Nos veremos pronto";
-                nextTextCounter = nextTextEvery - 0.1f;
                 cumplido = true;
-            }
+                nextTextCounter = nextTextEvery - 0.1f;
+
+            }            
 
             if (nextTextCounter < 0)
             {
