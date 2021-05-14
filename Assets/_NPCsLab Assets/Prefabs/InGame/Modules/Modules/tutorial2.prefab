@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978663867097039849}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.33, y: 6.16, z: 0}
+  m_LocalPosition: {x: 14.33, y: 6.41, z: 0}
   m_LocalScale: {x: 0.20586999, y: 4.72988, z: 1}
   m_Children: []
   m_Father: {fileID: 8478501405951713220}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 8478501405951713220}
   - component: {fileID: 2615442801145886424}
   m_Layer: 0
-  m_Name: tutorial 2
+  m_Name: tutorial2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -307,7 +307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5558449493378796183}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28, y: 6.19, z: 0}
+  m_LocalPosition: {x: 28, y: 6.44, z: 0}
   m_LocalScale: {x: 0.20586999, y: 4.72988, z: 1}
   m_Children: []
   m_Father: {fileID: 8478501405951713220}

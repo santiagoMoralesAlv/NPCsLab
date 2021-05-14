@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -18,8 +19,9 @@ public class SwipeDetections : MonoBehaviour
     private float startTime;
     private Vector2 endPosition;
     private float endTime;
-    private Coroutine coroutine;  
+    private Coroutine coroutine;
 
+    public static Action ESwipeUp, ESwipeDown, ESwipeLeft, ESwipeRight;
 
     private void Awake()
     {
@@ -68,7 +70,6 @@ public class SwipeDetections : MonoBehaviour
         if(Vector3.Distance(startPosition, endPosition)>= minimumDistance &&
             (endTime - startTime) <= maximumTime)
         {
-            Debug.Log("Swipe Detected");
             Vector3 direction = endPosition - startPosition;
             Vector2 direction2D = new Vector2(direction.x, direction.y).normalized;
             SwipeDirection(direction2D);
@@ -79,22 +80,20 @@ public class SwipeDetections : MonoBehaviour
     {
         if (Vector2.Dot(Vector2.up, direction) > directionThreshold)
         {
-            Debug.Log("Swipe Up");
-            characterMov.Jump(1f);
+            (ESwipeUp)?.Invoke();
 
         }
         else if (Vector2.Dot(Vector2.down, direction) > directionThreshold)
         {
-            Debug.Log("Swipe Down");
-            characterMov.Slide();
+            (ESwipeDown)?.Invoke();
         }
         else if (Vector2.Dot(Vector2.left, direction) > directionThreshold)
         {
-            Debug.Log("Swipe Left");
+            (ESwipeLeft)?.Invoke();
         }
         else if (Vector2.Dot(Vector2.right, direction) > directionThreshold)
         {
-            Debug.Log("Swipe Right");
+            (ESwipeRight)?.Invoke();
         }
     }
 

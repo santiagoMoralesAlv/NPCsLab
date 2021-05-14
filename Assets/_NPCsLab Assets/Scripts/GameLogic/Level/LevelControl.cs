@@ -19,9 +19,10 @@ namespace GameLogic.Levels
 
         [SerializeField] private float velocity, timeRunning;
         [SerializeField] private int numOfModulesInGame;
-        private int passedModules;
+        static private float passedModules, maxPassedModules;
         private int coins;
-        public int PassedModules => passedModules;
+        public float PassedModules => passedModules;
+        public float MaxPassedModules => maxPassedModules;
         public float TimeRunning => timeRunning;
         public float Coins => coins;
 
@@ -68,6 +69,11 @@ namespace GameLogic.Levels
             if (GameStatus.Instance.Status == Status.played)
             {
                 timeRunning += Time.deltaTime;
+            }
+
+            if (timeRunning > maxPassedModules)
+            {
+                maxPassedModules = timeRunning;
             }
         }
 

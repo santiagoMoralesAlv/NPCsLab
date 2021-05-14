@@ -47,6 +47,8 @@ public class CharacterMov : Singleton<CharacterMov>
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         initialPosition = this.transform.position;
+        
+        secondJump = true;
     }
 
     private void OnEnable()
@@ -58,14 +60,25 @@ public class CharacterMov : Singleton<CharacterMov>
     {
         playerControls.Disable();
     }
+
+    private void OnDestroy()
+    {
+        SwipeDetections.ESwipeUp -= Jump;
+        SwipeDetections.ESwipeDown -= Slide;
+    }
+
     void Start()
     {
         playerControls.General.PrimaryContact.started += ctx => StartTouchPrimary(ctx);
         playerControls.General.PrimaryContact.canceled += ctx => EndTouchPrimary(ctx);
 
 
-        playerControls.General.Jump.performed += ctx => Jump(ctx.ReadValue<float>());
-        playerControls.General.Slide.performed += _ => Slide();
+        //playerControls.General.Jump.performed += ctx => Jump(ctx.ReadValue<float>());
+        //playerControls.General.Slide.performed += _ => Slide();
+
+        SwipeDetections.ESwipeUp += Jump;
+        SwipeDetections.ESwipeDown += Slide;
+
 
     }
 
@@ -86,32 +99,51 @@ public class CharacterMov : Singleton<CharacterMov>
     {
         return Utils.ScreenToWorld( playerControls.General.PrimaryPosition.ReadValue<Vector2>());
     }
-    public void Jump(float val)
+
+    private bool secondJump;
+    public void Jump()
     {
-        if (val == 1 && col.IsTouchingLayers(ground) && (GameStatus.Instance.Status == Status.played))
+        if (GameStatus.Instance.Status == Status.played)
         {
-            this.GetComponent<AudioSource>().Stop();
-            rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
-            anim.SetTrigger("Jump");
-            jumping += 1;
-            StartCoroutine("stopJump");
+            if (col.IsTouchingLayers(ground))
+            {
+                this.GetComponent<AudioSource>().Stop();
+                rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+                anim.SetTrigger("Jump");
+                jumping += 1;
+                StartCoroutine("stopJump");
+                secondJump = true;
+            }
+            else if (secondJump)
+            {
+                rb.Sleep();
+                rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+                secondJump = false;
+            }
         }
     }
     
      public void Slide()
     {
 
-         if (col.IsTouchingLayers(ground) && (GameStatus.Instance.Status == Status.played))
-         {        
-            this.GetComponent<AudioSource>().Stop();
-            anim.SetTrigger("Slide");
-            col.enabled = false;
-            slideColl.enabled=true;
-            sliding += 1;
-            //rb.AddForce(new Vector2(slideSpeed,0),ForceMode2D.Impulse);
-            StartCoroutine("stopSlide");
+        if (GameStatus.Instance.Status == Status.played)
+        {
+            if (col.IsTouchingLayers(ground))
+            {
+                this.GetComponent<AudioSource>().Stop();
+                anim.SetTrigger("Slide");
+                col.enabled = false;
+                slideColl.enabled = true;
+                sliding += 1;
+                //rb.AddForce(new Vector2(slideSpeed,0),ForceMode2D.Impulse);
+                StartCoroutine("stopSlide");
+            }
+            else
+            {
+                rb.AddForce(new Vector2(0, -jumpSpeed), ForceMode2D.Impulse); 
+            }
         }
-              
+
     }
     IEnumerator stopJump()
     {
@@ -121,6 +153,7 @@ public class CharacterMov : Singleton<CharacterMov>
         anim.Play("PlayerRun");
         anim.SetBool("Jump", false);
         
+
     }
     IEnumerator stopSlide()
     {
