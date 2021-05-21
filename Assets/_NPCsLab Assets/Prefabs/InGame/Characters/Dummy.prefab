@@ -19,6 +19,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1538670648, guid: dd5af14ea2c8d25459c1124fde628d40, type: 3}
+      propertyPath: minimumDistance
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538670648, guid: dd5af14ea2c8d25459c1124fde628d40, type: 3}
+      propertyPath: maximumTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538670648, guid: dd5af14ea2c8d25459c1124fde628d40, type: 3}
+      propertyPath: directionThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538670648, guid: dd5af14ea2c8d25459c1124fde628d40, type: 3}
+      propertyPath: trail
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5411687583155107587, guid: dd5af14ea2c8d25459c1124fde628d40, type: 3}
       propertyPath: m_Name
       value: Dummy
