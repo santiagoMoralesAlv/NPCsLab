@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1053110133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1053110134}
+  m_Layer: 0
+  m_Name: Center Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1053110134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053110133}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.95, y: 2.63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3765006994664732836}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1732501840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1732501841}
+  m_Layer: 0
+  m_Name: Respawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: db3dc7a02ac6d4e90bbe905a44ac265b, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1732501841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732501840}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.78, y: 10.63, z: -0.74327946}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3765006993925706860}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2122234493
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,11 +101,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 948b22dc82071f94b8bbb05b2b3c6867, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4a0000a0f7ee04e469c963b5d15b858d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.522
+  m_Volume: 0.061
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -139,7 +199,7 @@ GameObject:
   - component: {fileID: 3765006993925706861}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +214,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1732501841}
   m_Father: {fileID: 3765006994031874378}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -170,9 +231,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a286d129c81974e96b550e7b183e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 1732501841}
   characterPreFab:
   - {fileID: 5411687583155107587, guid: dd5af14ea2c8d25459c1124fde628d40, type: 3}
-  - {fileID: 529030941672758425, guid: c15ff41ff7a66ab49a05bd09c52d4ed0, type: 3}
+  - {fileID: 888715619878951290, guid: 0367613234e84194cb4a6fb868fb7ac8, type: 3}
 --- !u!1 &3765006994031874377
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff87eff350a99b46a9de9a44ec4bb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 10
+  transitionSpeed: 0.4
 --- !u!1 &3765006994664732858
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +322,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1053110134}
   m_Father: {fileID: 3765006994031874378}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -277,7 +340,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleBuilder: {fileID: 11400000, guid: 3d29893d7080fb74281ee31caeb4da6f, type: 2}
-  velocity: 0.1
+  velocity: 30
   timeRunning: 0
-  moduleWidth: 14.02
-  moduleHeight: 6.39
+  numOfModulesInGame: 2
+  centerPoint: {fileID: 1053110134}
+  music: {fileID: 2122234494}
+  songs:
+  - {fileID: 8300000, guid: 168e70495e69c554695a5783b6e1001f, type: 3}
+  - {fileID: 8300000, guid: 948b22dc82071f94b8bbb05b2b3c6867, type: 3}
+  - {fileID: 8300000, guid: 0ffa3494ccd2982489d0180d0ce679c2, type: 3}
+  - {fileID: 8300000, guid: 0e310c5b9d16a0247b16aeb97a46a260, type: 3}
+  - {fileID: 8300000, guid: 6b09f11fc7c714d4cabda37859a54d80, type: 3}
+  - {fileID: 8300000, guid: 39608a205aeee654ab75fead2f261027, type: 3}

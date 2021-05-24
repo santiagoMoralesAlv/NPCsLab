@@ -16,6 +16,8 @@ namespace UI
         {
             MenuManager.Instance.CloseAndCleanAll();
             SceneControl.Instance.ReturnToHome();
+            Time.timeScale = 1;
+            Time.fixedDeltaTime = 0.02f;
         }
         
         void Update()

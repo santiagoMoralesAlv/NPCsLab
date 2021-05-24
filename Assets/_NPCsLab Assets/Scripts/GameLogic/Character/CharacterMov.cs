@@ -74,19 +74,36 @@ public class CharacterMov : Singleton<CharacterMov>
 
     void Start()
     {
-        playerControls.General.PrimaryContact.started += ctx => StartTouchPrimary(ctx);
-        playerControls.General.PrimaryContact.canceled += ctx => EndTouchPrimary(ctx);
+        //playerControls.General.PrimaryContact.started += ctx => StartTouchPrimary(ctx);
+        //playerControls.General.PrimaryContact.canceled += ctx => EndTouchPrimary(ctx);
 
 
-        //playerControls.General.Jump.performed += ctx => Jump(ctx.ReadValue<float>());
-        //playerControls.General.Slide.performed += _ => Slide();
+        //playerControls.General.Jump. += ctx => JumpControl;
+        //playerControls.General.Slide.started += _ => Slide();
 
+        playerControls.General.Slide.started += _ => Slide();
         SwipeDetections.ESwipeUp += Jump;
         SwipeDetections.ESwipeDown += Slide;
 
 
     }
 
+    public void JumpControl(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Jump();
+        }
+    }
+    public void SlideControl(InputAction.CallbackContext context)
+    {
+        Debug.Log("1");
+        if (context.started)
+        {
+            Slide();
+        }
+    }
+    
     void Update()
     {
         if (GameStatus.Instance.Status == Status.played)
@@ -95,18 +112,20 @@ public class CharacterMov : Singleton<CharacterMov>
         }
     }
 
-    private void StartTouchPrimary(InputAction.CallbackContext context)
+    public void TouchPrimary(InputAction.CallbackContext context)
     {
-        if (OnStartTouch != null) OnStartTouch(Utils.ScreenToWorld(playerControls.General.PrimaryPosition.ReadValue<Vector2>()),(float)context.startTime);
+        Debug.Log("jeje"+context.performed+context.started);
+        if (context.started)
+        {
+            (OnStartTouch)?.Invoke(Utils.ScreenToWorld(context.ReadValue<Vector2>()),(float)context.startTime);
+        }
+        
+        if (context.canceled)
+        {
+            (OnEndTouch)?.Invoke(Utils.ScreenToWorld(context.ReadValue<Vector2>()), (float) context.time);
+        }
     }
-    private void EndTouchPrimary(InputAction.CallbackContext context)
-    {
-        if (OnEndTouch != null) OnEndTouch(Utils.ScreenToWorld( playerControls.General.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
-    }
-    public Vector2 PrimaryPosition()
-    {
-        return Utils.ScreenToWorld( playerControls.General.PrimaryPosition.ReadValue<Vector2>());
-    }
+    
 
     [SerializeField] public bool isVark;
     [SerializeField] private ParticleSystem coinsEffect;

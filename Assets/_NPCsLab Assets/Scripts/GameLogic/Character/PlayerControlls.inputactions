@@ -6,14 +6,6 @@
             "id": "55728df6-6155-4e80-961f-92ea2b420d71",
             "actions": [
                 {
-                    "name": "PrimaryContact",
-                    "type": "PassThrough",
-                    "id": "deee9c12-78da-4d14-a01c-17dfea837f14",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
                     "name": "PrimaryPosition",
                     "type": "PassThrough",
                     "id": "51bd50ff-e4ce-4f5e-bd0e-ae1a3792eb80",
@@ -31,7 +23,7 @@
                 },
                 {
                     "name": "Jump",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "1c5279ad-c37c-4c92-b6cd-0fcdd5ab6037",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -41,7 +33,7 @@
                     "name": "Slide",
                     "type": "PassThrough",
                     "id": "f0582139-20be-4148-8d1a-7ec64a1f6ac3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -49,22 +41,11 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "03262b05-d91a-47d3-8e72-edbbe6e5b634",
-                    "path": "<Touchscreen>/primaryTouch/press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PrimaryContact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "5931dca3-9131-4972-b758-96000963f47a",
                     "path": "<Touchscreen>/primaryTouch/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Player",
                     "action": "PrimaryPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -115,8 +96,41 @@
                 },
                 {
                     "name": "",
+                    "id": "ef12dd8d-35ee-4167-810a-a21565362f0f",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "63c71b46-078a-4a58-ba53-16fbb148ca5e",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "3a65ac69-9fe2-4417-8652-2bc6cb84fb3b",
                     "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1098e1d7-fe48-45fc-97bd-72baeb541da3",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -127,5 +141,11 @@
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Player",
+            "bindingGroup": "Player",
+            "devices": []
+        }
+    ]
 }

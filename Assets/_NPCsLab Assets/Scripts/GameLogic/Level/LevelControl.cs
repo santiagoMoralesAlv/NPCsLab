@@ -51,6 +51,9 @@ namespace GameLogic.Levels
             moduleBuilder.Init();
             
             GameStatus.Instance.e_NewStatus += CheckGameStatus;
+            
+            
+            theFirtsTime = false;
         }
 
         private void Start()
@@ -59,8 +62,6 @@ namespace GameLogic.Levels
             LevelControl.Instance.InstanceSpecificModule("base");
             if (PlayerPrefs.GetInt("TutorialHasPlayed", 0) <= 0)
             {
-                LevelControl.Instance.InstanceSpecificModule("tutorial");
-                LevelControl.Instance.InstanceSpecificModule("tutorial1");
                 LevelControl.Instance.InstanceSpecificModule("tutorial1");
                 LevelControl.Instance.InstanceSpecificModule("tutorial");
                 LevelControl.Instance.InstanceSpecificModule("tutorial2");
@@ -70,20 +71,34 @@ namespace GameLogic.Levels
             }
 
         }
-        
+
+        private bool theFirtsTime;
         [SerializeField] private AudioSource music;
         [SerializeField] private AudioClip[] songs;
         public void CheckGameStatus(Status _status, bool inTransition)
         {
             if (_status == Status.played && inTransition)
             {
-                passedModules = 0;
-                coins = 0;
-                timeRunning = 0;
-                Character.Instance.WakeUp();
-                InstanceFirtsModules();
-                music.clip = songs[UnityEngine.Random.Range(0,songs.Length-1)];
-                music.Play();
+                if (!theFirtsTime)
+                {
+                    passedModules = 0;
+                    coins = 0;
+                    timeRunning = 0;
+
+                    Character.Instance.WakeUp();
+                    InstanceFirtsModules();
+                    
+                    music.clip = songs[UnityEngine.Random.Range(0,songs.Length-1)];
+                    music.Play();
+
+                    theFirtsTime = true;
+                }
+                else
+                {
+                    music.clip = songs[UnityEngine.Random.Range(0,songs.Length-1)];
+                    music.Play();
+                }
+
             }
         }
 
@@ -111,18 +126,18 @@ namespace GameLogic.Levels
 
         void FixedUpdate()
         {
-            if (GameStatus.Instance.Status != Status.built)
+            if ((GameStatus.Instance.Status == Status.played || GameStatus.Instance.Status == Status.paused) && Character.Instance.IsAlive)
             {
                 foreach (var module in modules)
                 {
-                    if (timeRunning > 0)
+                    if (timeRunning > 0 && Time.timeScale>0)
                     {
                         module.transform.Translate(
-                            Vector3.left * (Time.fixedDeltaTime * (Mathf.Log(velocity * timeRunning))), Space.Self);
+                            Vector3.left * (Time.fixedDeltaTime * (Mathf.Log(velocity * timeRunning * Time.timeScale))), Space.Self);
                     }
                 }
 
-                if (modules.Peek().transform.position.x <= -40)
+                if (modules.Peek().transform.position.x <= -modules.Peek().WidthSize)
                 {
                     modules.Dequeue().DeactiveParts();
                     InstanceRandomModule();

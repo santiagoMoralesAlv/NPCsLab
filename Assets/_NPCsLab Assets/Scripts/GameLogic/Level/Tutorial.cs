@@ -69,12 +69,12 @@ namespace GameLogic.Levels
                 if (CharacterMov.Instance.isVark)
                 {
                     textComp.text = "¿De nuevo en el principio Vark?, concentrate mas, asi nunca saldras de aqui...";
-                    textSecond.text = "Habilidad especial: Triple salto";
+                    textSecond.text = "";
                 }
                 else
                 {
                     textComp.text = "¿De nuevo en el principio Dummy?, concentrate mas, asi nunca encontraras a Vark...";
-                    textSecond.text = "Habilidad especial: Caida rapida";
+                    textSecond.text = "";
                 }
                 StartCoroutine("troll");
             }
@@ -188,7 +188,7 @@ namespace GameLogic.Levels
 
         public string LastMessage(out string secondaryText)
         {
-            secondaryText = "Recoge monedas para usar la habilidad especial de tu personaje";
+            secondaryText = "Recoge monedas";
             
             if (nextTextCounter < 2 * nextTextEvery && nextTextCounter >= nextTextEvery)
             {

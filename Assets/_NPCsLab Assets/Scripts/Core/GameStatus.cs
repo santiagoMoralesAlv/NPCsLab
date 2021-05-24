@@ -46,7 +46,7 @@ namespace Core
         public void Stop()
         {
             if (i_status != Status.stopped)
-                StartCoroutine(Interpolate(1, 0.5f, 0.02f, 0.0005f, () => { ChangeStatus(Status.stopped); }));
+                StartCoroutine(Interpolate(1, 1f, 0.02f, 0.02f, () => { ChangeStatus(Status.stopped); }));
         }
 
         public void Pause()

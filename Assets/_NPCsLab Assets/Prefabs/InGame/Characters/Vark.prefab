@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -227,7 +227,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5008,6 +5008,7 @@ GameObject:
   - component: {fileID: 1538670648}
   - component: {fileID: 6741381528397968634}
   - component: {fileID: 5900766256991408995}
+  - component: {fileID: 9171184103601957213}
   m_Layer: 0
   m_Name: Vark
   m_TagString: Player
@@ -5051,7 +5052,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5099,7 +5100,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 4
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5e35a96f85d6a1449ad709318f35cad4, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -5113,7 +5114,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 5411687583155107587}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 7906798a7286bbf4fb134c2ddb3aa889, type: 2}
+  m_Material: {fileID: 6200000, guid: 5e35a96f85d6a1449ad709318f35cad4, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -5142,7 +5143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d6564506a112446ad2b5886fb8f3e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 1
   jumpSpeed: 23
   slideSpeed: 10
   hurtForce: 20
@@ -5301,6 +5302,92 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9171184103601957213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5411687583155107587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: ecee90794d0caca46aa2f5a7620ade4f, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: deee9c12-78da-4d14-a01c-17dfea837f14
+    m_ActionName: General/PrimaryContact[/Touchscreen/primaryTouch/press]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5411687583155107588}
+        m_TargetAssemblyTypeName: CharacterMov, GameLogic
+        m_MethodName: TouchPrimary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 51bd50ff-e4ce-4f5e-bd0e-ae1a3792eb80
+    m_ActionName: General/PrimaryPosition[/Touchscreen/primaryTouch/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: af3f1a79-903c-413e-8361-eca1796e2c6d
+    m_ActionName: General/Move[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5411687583155107588}
+        m_TargetAssemblyTypeName: CharacterMov, GameLogic
+        m_MethodName: JumpControl
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1c5279ad-c37c-4c92-b6cd-0fcdd5ab6037
+    m_ActionName: General/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5411687583155107588}
+        m_TargetAssemblyTypeName: CharacterMov, GameLogic
+        m_MethodName: SlideControl
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f0582139-20be-4148-8d1a-7ec64a1f6ac3
+    m_ActionName: General/Slide[/Keyboard/s]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Player
+  m_DefaultActionMap: General
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &7412207227675115842
 GameObject:
   m_ObjectHideFlags: 0

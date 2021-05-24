@@ -12,5 +12,10 @@ namespace UI
         {
             GameStatus.Instance.Play();
         }
+
+        public void Exit()
+        {
+            Application.Quit();
+        }
     }
 }

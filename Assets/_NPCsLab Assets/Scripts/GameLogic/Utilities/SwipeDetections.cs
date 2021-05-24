@@ -48,15 +48,7 @@ public class SwipeDetections : MonoBehaviour
        // trail.transform.position = position;
        // coroutine = StartCoroutine(Trail());
     }
-
-    /*private IEnumerator Trail()
-    {
-        while (true)
-        {
-            trail.transform.position = characterMov.PrimaryPosition();
-            yield return null;
-        }
-    }*/
+    
     private void SwipeEnd(Vector2 position, float time)
     {
         //trail.SetActive(false);
