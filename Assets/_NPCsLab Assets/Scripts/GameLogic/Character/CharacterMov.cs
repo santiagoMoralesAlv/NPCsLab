@@ -3,6 +3,8 @@ using System.Collections;
 using System;
 using UnityEngine.InputSystem;
 using Core;
+using GameLogic;
+using GameLogic.Levels;
 
 [DefaultExecutionOrder(-1)]
 public class CharacterMov : Singleton<CharacterMov>
@@ -32,6 +34,7 @@ public class CharacterMov : Singleton<CharacterMov>
     public int jumping;
     public int sliding;
 
+    public AudioSource pasos;
 
     private Vector3 initialPosition;
 
@@ -47,8 +50,10 @@ public class CharacterMov : Singleton<CharacterMov>
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         initialPosition = this.transform.position;
+        pasos = this.GetComponent<AudioSource>();
         
         secondJump = true;
+        thirdJump = true;
     }
 
     private void OnEnable()
@@ -84,7 +89,10 @@ public class CharacterMov : Singleton<CharacterMov>
 
     void Update()
     {
-        Move();
+        if (GameStatus.Instance.Status == Status.played)
+        {
+            Move();
+        }
     }
 
     private void StartTouchPrimary(InputAction.CallbackContext context)
@@ -100,25 +108,38 @@ public class CharacterMov : Singleton<CharacterMov>
         return Utils.ScreenToWorld( playerControls.General.PrimaryPosition.ReadValue<Vector2>());
     }
 
-    private bool secondJump;
+    [SerializeField] public bool isVark;
+    [SerializeField] private ParticleSystem coinsEffect;
+    private bool secondJump, thirdJump;
+    [SerializeField] private AudioSource skillSound;
     public void Jump()
     {
         if (GameStatus.Instance.Status == Status.played)
         {
             if (col.IsTouchingLayers(ground))
             {
-                this.GetComponent<AudioSource>().Stop();
+                /*this.GetComponent<AudioSource>().Stop();*/
                 rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
                 anim.SetTrigger("Jump");
                 jumping += 1;
-                StartCoroutine("stopJump");
+                // StartCoroutine("stopJump");
                 secondJump = true;
+                thirdJump = true;
             }
-            else if (secondJump)
+            else if (thirdJump && isVark)
             {
-                rb.Sleep();
-                rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
-                secondJump = false;
+                if (LevelControl.Instance.UseCoins(5))
+                {
+                    rb.Sleep();
+                    rb.AddForce(new Vector2(0, jumpSpeed*0.5f), ForceMode2D.Impulse);
+                    
+                    if (secondJump)
+                        secondJump = false;
+                    else
+                        thirdJump = false;
+                    coinsEffect.Play();
+                    skillSound.Play();
+                }
             }
         }
     }
@@ -130,58 +151,79 @@ public class CharacterMov : Singleton<CharacterMov>
         {
             if (col.IsTouchingLayers(ground))
             {
-                this.GetComponent<AudioSource>().Stop();
+                /*this.GetComponent<AudioSource>().Stop();*/
                 anim.SetTrigger("Slide");
-                col.enabled = false;
-                slideColl.enabled = true;
+                // col.enabled = false;
+                // slideColl.enabled = true;
                 sliding += 1;
                 //rb.AddForce(new Vector2(slideSpeed,0),ForceMode2D.Impulse);
-                StartCoroutine("stopSlide");
+                /*StartCoroutine("stopSlide");*/
             }
-            else
+            else if(!isVark)
             {
-                rb.AddForce(new Vector2(0, -jumpSpeed), ForceMode2D.Impulse); 
+                if (LevelControl.Instance.UseCoins(5))
+                {
+                    rb.Sleep();
+                    rb.AddForce(new Vector2(0, -jumpSpeed), ForceMode2D.Impulse);
+                    coinsEffect.Play();
+                    skillSound.Play();
+                }
             }
         }
 
     }
-    IEnumerator stopJump()
+    /*IEnumerator stopJump()
     {
 
-        yield return new WaitForSeconds(0.7f);
+        
+        /*yield return new WaitForSeconds(0.7f);
         this.GetComponent<AudioSource>().Play();
         anim.Play("PlayerRun");
-        anim.SetBool("Jump", false);
+        anim.SetBool("Jump", false);#1#
         
 
-    }
-    IEnumerator stopSlide()
+    }*/
+    /*IEnumerator stopSlide()
     {
-        yield return new WaitForSeconds(0.55f);
-        anim.Play("PlayerRun");
-        this.GetComponent<AudioSource>().Play();
-
-        //anim.SetBool("Slide", false);
-        col.enabled = true;
-        slideColl.enabled = false;
-        /*yield return new WaitForSeconds(0.6f);
-        this.transform.position = initialPosition;*/
-
-    }
+        // yield return new WaitForSeconds(0.55f);
+        // anim.Play("PlayerRun");
+        // this.GetComponent<AudioSource>().Play();
+        //
+        // //anim.SetBool("Slide", false);
+        // col.enabled = true;
+        // slideColl.enabled = false;
+        /*
+        yield return new WaitForSeconds(0.6f);
+        this.transform.position = initialPosition;
+        #1#
+    }*/
     private void Move()
     {
         //Read the movement value
-
-        float movementInput = playerControls.General.Move.ReadValue<float>();
+        
+        //float movementInput = playerControls.General.Move.ReadValue<float>();
         //Move the player
 
         Vector3 currentPosition = transform.position;
-        currentPosition.x += movementInput * speed * Time.deltaTime;
-        //transform.position = currentPosition;
+        
+        currentPosition.x += (-currentPosition.x + LevelControl.Instance.CenterPoint.position.x) * speed * Time.deltaTime;
+        transform.position = currentPosition;
 
         //Animation
-        if (movementInput != 0) anim.SetBool("Run", true);
-        else anim.SetBool("Run", false);
+        if (col.IsTouchingLayers(ground))
+        {
+            if(!anim.GetBool("Run"))
+            anim.SetBool("Run", true);
+            if(!pasos.isPlaying)
+            pasos.Play();
+        }
+        else {
+            if(anim.GetBool("Run"))
+                anim.SetBool("Run", false);
+            if(pasos.isPlaying)
+                pasos.Stop();
+            
+        }
        
     }
     private void OnCollisionEnter2D(Collision2D other)
@@ -194,10 +236,7 @@ public class CharacterMov : Singleton<CharacterMov>
             }
            
         }
-        if (other.gameObject.tag == "Death")
-        {
-            sr.color = new Color (1,0,0,1);
-        }
+        
 
     }
 

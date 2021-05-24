@@ -11,8 +11,9 @@ namespace GameLogic.Levels
 {
     public class Tutorial : MonoBehaviour
     {
-        private Text textComp;
-        private string text;
+        [SerializeField] private Text textComp;
+        [SerializeField] private Text textSecond;
+        private string text,secondaryText;
         public int state = 0;
         private float nextTextCounter;
         private bool cumplido = false;
@@ -21,7 +22,6 @@ namespace GameLogic.Levels
         public void Awake()
         {
           // PlayerPrefs.SetInt("TutorialHasPlayed", 0);
-            textComp = GetComponent<Text>();
             nextTextCounter = 2 * nextTextEvery;
         }
 
@@ -34,17 +34,22 @@ namespace GameLogic.Levels
                 nextTextCounter -= Time.deltaTime/1.5f ;
                 switch (state)
                 {
+                        
                     case 0:
-                        textComp.text = StartingTutorial();
+                        textComp.text = StartingTutorial(out secondaryText);
+                        textSecond.text = secondaryText;
                         break;
                     case 1:
-                        textComp.text = JumpingCheck();
+                        textComp.text = JumpingCheck(out secondaryText);
+                        textSecond.text = secondaryText;
                         break;
                     case 2:
-                        textComp.text = SlidingCheck();
+                        textComp.text = SlidingCheck(out secondaryText);
+                        textSecond.text = secondaryText;
                         break;
                     case 3:
-                        textComp.text = LastMessage();
+                        textComp.text = LastMessage(out secondaryText);
+                        textSecond.text = secondaryText;
                         break;
 
                     case 4:
@@ -60,7 +65,17 @@ namespace GameLogic.Levels
             else if ((GameStatus.Instance.Status == Status.played) && PlayerPrefs.GetInt("TutorialHasPlayed", 0) ==1)
             {
                 gameObject.SetActive(true);
-                textComp.text = "¿De nuevo en el principio Vark?, concentrate mas, asi nunca saldras de aqui...";
+
+                if (CharacterMov.Instance.isVark)
+                {
+                    textComp.text = "¿De nuevo en el principio Vark?, concentrate mas, asi nunca saldras de aqui...";
+                    textSecond.text = "Habilidad especial: Triple salto";
+                }
+                else
+                {
+                    textComp.text = "¿De nuevo en el principio Dummy?, concentrate mas, asi nunca encontraras a Vark...";
+                    textSecond.text = "Habilidad especial: Caida rapida";
+                }
                 StartCoroutine("troll");
             }
 
@@ -76,12 +91,21 @@ namespace GameLogic.Levels
 
 
 
-        public string StartingTutorial()
+        public string StartingTutorial(out string secondaryText)
         {
+            secondaryText = "";
+            
 
             if (nextTextCounter < 2 * nextTextEvery  && nextTextCounter >= nextTextEvery )
             {
-                text = "Saludos Vark, esperamos que escapes con exito, pero primero deberas aprender lo basico";
+                if (CharacterMov.Instance.isVark)
+                {
+                    text = "Saludos Vark, esperamos que escapes con exito, pero primero deberas aprender lo basico";
+                }
+                else
+                {
+                    text = "Saludos Dummy, esperamos que encuentres a Vark, pero primero deberas aprender lo basico";
+                }
             }
             else if (nextTextCounter < nextTextEvery)
             {
@@ -93,20 +117,24 @@ namespace GameLogic.Levels
                 state = 1;
                 PassText();
             }
+
+            secondaryText = "";
             return text;
         }
 
-        public string JumpingCheck()
+        public string JumpingCheck(out string secondaryText)
         {
 
+            secondaryText = "Desliza hacia arriba";
+            
             if (nextTextCounter < 2 * nextTextEvery && nextTextCounter >= nextTextEvery)
             {
-                text = "Para saltar desliza hacia arriba";
+                text = "Para saltar desliza con el dedo hacia arriba, esquiva estos obstaculos y acostumbrate al salto";
                 cumplido = false;
             }
             else if (nextTextCounter < nextTextEvery && cumplido == false)
             {
-                text = "Esquiva estos obstaculos y acostumbrate al salto";
+                text = "Si tu personaje es Vark con 10 monedas puedes saltar en el aire";
                 nextTextCounter = nextTextEvery - 0.1f;
                  if (CharacterMov.Instance.jumping >= 10 )
                  {
@@ -127,16 +155,18 @@ namespace GameLogic.Levels
 
         }
 
-        public string SlidingCheck()
+        public string SlidingCheck(out string secondaryText)
         {
+            secondaryText = "Desliza hacia abajo";
+            
             if (nextTextCounter < 2 * nextTextEvery && nextTextCounter >= nextTextEvery)
             {
-                text = "Ahora tendras que deslizarte, para eso desliza hacia abajo";
+                text = "Ahora tendras que deslizarte, pongamoslo a prueba";
                 cumplido = false;
             }
             else if (nextTextCounter < nextTextEvery && cumplido == false)
             {
-                text = "Pongamoslo a prueba";
+                text = "Si tu personaje es Dummy con 5 monedas puedes caer de inmediato al suelo";
                 nextTextCounter = nextTextEvery - 0.1f;
                 if (CharacterMov.Instance.sliding>= 4)
                 {
@@ -156,8 +186,10 @@ namespace GameLogic.Levels
             return text;
         }
 
-        public string LastMessage()
+        public string LastMessage(out string secondaryText)
         {
+            secondaryText = "Recoge monedas para usar la habilidad especial de tu personaje";
+            
             if (nextTextCounter < 2 * nextTextEvery && nextTextCounter >= nextTextEvery)
             {
                 text = "Ahora ve a buscar a tu familia, el doctor estara feliz por ti";

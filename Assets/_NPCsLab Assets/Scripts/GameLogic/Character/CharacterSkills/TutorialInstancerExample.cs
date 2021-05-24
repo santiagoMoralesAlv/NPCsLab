@@ -9,7 +9,7 @@ public class TutorialInstancerExample : MonoBehaviour
     private void Awake()
     {
         LevelControl.Instance.EInit += Init;
-        LevelControl.Instance.EInit += RequestInstanceModules;
+        //LevelControl.Instance.EInit += RequestInstanceModules;
     }
 
     public void RequestInstanceModules()
@@ -26,6 +26,5 @@ public class TutorialInstancerExample : MonoBehaviour
 
     public void Init()
     {
-        Debug.Log("Este es un ejemplo de como ejecutar una funcion cuando se presiona play");
     }
 }

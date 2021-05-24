@@ -16,7 +16,7 @@ namespace GameLogic.Utilities
             bombAnimator = GetComponent<Animator>();
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.CompareTag("Player"))
             {
@@ -30,7 +30,14 @@ namespace GameLogic.Utilities
         IEnumerator dead()
         {
             yield return new WaitForSeconds(0.15f);
-            player.gameObject.GetComponent<Character>().Kill();
+            try
+            {
+                player.gameObject.GetComponent<Character>().Kill();
+            }
+            catch (Exception e)
+            {
+                player.transform.parent.gameObject.GetComponent<Character>().Kill();
+            }
         }
 
     }

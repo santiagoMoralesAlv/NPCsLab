@@ -176,14 +176,7 @@ namespace NTC_MenuAndGUISystem
                 activeMenuComponents[i].SetActive(true);
             }
 
-            try
-            {
-                e_openMenu(true);
-            }
-            catch
-            {
-                //no existen hijos
-            }
+            (e_openMenu)?.Invoke(true);
         }
 
         virtual public void DecorateOpenMenu() {
@@ -217,29 +210,15 @@ namespace NTC_MenuAndGUISystem
             isActiveMenu = false;
             e_closeAllMenus -= SetMenuActive;
 
-            //intenta cerrar los hijos
-            try
-            {
-                e_closeMenu(false);
-            }
-            catch
-            {
-                //no existen hijos
-            }
+            
+            (e_closeMenu)?.Invoke(false);
         }
 
         public static void CloseAll() //ciera los menus suscritos al evento restartMenu
         {
-            try
-            {
-                menuSystemOn = false;
-                e_closeAllMenus(false);
-            }
-            catch (System.NullReferenceException e)
-            {
-                Debug.LogWarning("Sin menus para cerrar");
-
-            }
+            
+            menuSystemOn = false;
+            (e_closeAllMenus)?.Invoke(false);
         }
 
         public static void CloseAndCleanAllMenusInControl() //Desuscribe todos los menus del evento restartMenu, esto para cuando se cambia de scena 

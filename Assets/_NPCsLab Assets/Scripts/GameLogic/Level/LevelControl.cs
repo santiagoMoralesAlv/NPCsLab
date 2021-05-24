@@ -6,6 +6,7 @@ using Core;
 using GameLogic.Characters;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using Random = System.Random;
 
 namespace GameLogic.Levels
 {
@@ -26,12 +27,27 @@ namespace GameLogic.Levels
         public float TimeRunning => timeRunning;
         public float Coins => coins;
 
+        public bool UseCoins(int coinsToUse)
+        {
+            if ((coins - coinsToUse) >= 0)
+            {
+                coins -= coinsToUse;
+                return true;
+            }
+
+            return false;
+        }
+        
+        [SerializeField] private Transform centerPoint;
+
+        public Transform CenterPoint => centerPoint;
+
         private void Awake()
         {
             //Singleton initialization
             instance = this;
 
-            coins = 0;
+            
             moduleBuilder.Init();
             
             GameStatus.Instance.e_NewStatus += CheckGameStatus;
@@ -40,7 +56,7 @@ namespace GameLogic.Levels
         private void Start()
         {
             modules = new Queue<Module>();
-            LevelControl.Instance.InstanceSpecificModule("tutorial");
+            LevelControl.Instance.InstanceSpecificModule("base");
             if (PlayerPrefs.GetInt("TutorialHasPlayed", 0) <= 0)
             {
                 LevelControl.Instance.InstanceSpecificModule("tutorial");
@@ -54,13 +70,20 @@ namespace GameLogic.Levels
             }
 
         }
-
+        
+        [SerializeField] private AudioSource music;
+        [SerializeField] private AudioClip[] songs;
         public void CheckGameStatus(Status _status, bool inTransition)
         {
             if (_status == Status.played && inTransition)
             {
+                passedModules = 0;
+                coins = 0;
+                timeRunning = 0;
                 Character.Instance.WakeUp();
                 InstanceFirtsModules();
+                music.clip = songs[UnityEngine.Random.Range(0,songs.Length-1)];
+                music.Play();
             }
         }
 
@@ -92,7 +115,11 @@ namespace GameLogic.Levels
             {
                 foreach (var module in modules)
                 {
-                    module.transform.Translate(Vector3.left * (Time.fixedDeltaTime * velocity), Space.Self);
+                    if (timeRunning > 0)
+                    {
+                        module.transform.Translate(
+                            Vector3.left * (Time.fixedDeltaTime * (Mathf.Log(velocity * timeRunning))), Space.Self);
+                    }
                 }
 
                 if (modules.Peek().transform.position.x <= -40)

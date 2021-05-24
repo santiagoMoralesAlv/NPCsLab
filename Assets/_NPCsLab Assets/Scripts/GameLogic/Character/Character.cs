@@ -46,25 +46,11 @@ namespace GameLogic.Characters
         {
             if (state != "")
             {
-                try
-                {
-                    e_OldState(currentState);
-                }
-                catch (Exception e)
-                {
-                    //Without subscriptions
-                }
+                (e_OldState)?.Invoke(currentState);
             }
 
             currentState = state;
-            try
-            {
-                e_NewState(currentState);
-            }
-            catch (Exception e)
-            {
-                //Without subscriptions
-            }
+            (e_NewState)?.Invoke(currentState);
 
             switch (state) //behavior demanded by the animator
             {
@@ -115,7 +101,6 @@ namespace GameLogic.Characters
             m_animator = this.GetComponent<Animator>();
             isAlive = true;
             m_rg.simulated = true;
-            this.GetComponent<AudioSource>().Play();
 
             m_animator.SetTrigger("WakeUp"); //Notify a new state transition
         }
@@ -124,7 +109,7 @@ namespace GameLogic.Characters
             isAlive = false;                
             m_rg.simulated = false;
             m_animator.SetTrigger("Dead"); //Notify a new state transition
-            Destroy(this.gameObject, .3f);
+            //Destroy(this.gameObject, .3f);
             GameStatus.Instance.Stop();
         }   
         #endregion

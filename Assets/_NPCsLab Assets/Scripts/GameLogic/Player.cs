@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using Core;
 using GameLogic.Characters;
+using GameLogic.Levels;
 using UnityEngine;
 
 namespace GameLogic
@@ -13,8 +14,8 @@ namespace GameLogic
         public static Player Instance {get; private set; }
 
         private GameObject character;
-        
-        
+
+        [SerializeField] private Transform respawnPoint;
         
         
         
@@ -28,7 +29,8 @@ namespace GameLogic
         private GameObject i_character;
         public void NewCharacter(int index) {
             Destroy(this.i_character);
-            i_character = Instantiate(characterPreFab[index], new Vector3(2f, 1f, 0.0f), Quaternion.identity);
+            i_character = Instantiate(characterPreFab[index], respawnPoint.position, Quaternion.identity);
+            
         }
     }
 
