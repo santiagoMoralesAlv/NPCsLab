@@ -124,17 +124,24 @@ namespace GameLogic.Levels
 
         public string JumpingCheck(out string secondaryText)
         {
-
+#if UNITY_ANDROID
+            
             secondaryText = "Desliza hacia arriba";
+#else
+            secondaryText = "Clic izquierdo";
+
+            #endif
             
             if (nextTextCounter < 2 * nextTextEvery && nextTextCounter >= nextTextEvery)
             {
-                text = "Para saltar desliza con el dedo hacia arriba, esquiva estos obstaculos y acostumbrate al salto";
+                
+                text = "Puedes saltar para evitar obstaculos y tomar otros caminos";
+                
                 cumplido = false;
             }
             else if (nextTextCounter < nextTextEvery && cumplido == false)
             {
-                text = "Si tu personaje es Vark con 10 monedas puedes saltar en el aire";
+                text = "esquiva estos obstaculos, recoge monedas y acostumbrate al salto";
                 nextTextCounter = nextTextEvery - 0.1f;
                  if (CharacterMov.Instance.jumping >= 10 )
                  {
@@ -143,7 +150,7 @@ namespace GameLogic.Levels
             }
             else if (nextTextCounter < nextTextEvery && cumplido == true)
             {
-                text = "Muy bien";
+                text = "Muy bien!";
             }
             if (nextTextCounter < 0)
             {
@@ -157,16 +164,23 @@ namespace GameLogic.Levels
 
         public string SlidingCheck(out string secondaryText)
         {
-            secondaryText = "Desliza hacia abajo";
+            
+#if UNITY_ANDROID
+            
+            secondaryText = "Desliza con el dedo hacia abajo";
+#else
+            secondaryText = "Clic derecho para deslizar";
+
+#endif
             
             if (nextTextCounter < 2 * nextTextEvery && nextTextCounter >= nextTextEvery)
             {
-                text = "Ahora tendras que deslizarte, pongamoslo a prueba";
+                text = "Ahora tendras que deslizarte";
                 cumplido = false;
             }
             else if (nextTextCounter < nextTextEvery && cumplido == false)
             {
-                text = "Si tu personaje es Dummy con 5 monedas puedes caer de inmediato al suelo";
+                text = "Pongamoslo a prueba";
                 nextTextCounter = nextTextEvery - 0.1f;
                 if (CharacterMov.Instance.sliding>= 4)
                 {
@@ -175,7 +189,7 @@ namespace GameLogic.Levels
             }
             else if (nextTextCounter < nextTextEvery && cumplido == true)
             {
-                text = "Muy bien";
+                text = "Estas listo!";
             }
             if (nextTextCounter < 0)
             {
@@ -188,7 +202,7 @@ namespace GameLogic.Levels
 
         public string LastMessage(out string secondaryText)
         {
-            secondaryText = "Recoge monedas";
+            secondaryText = "";
             
             if (nextTextCounter < 2 * nextTextEvery && nextTextCounter >= nextTextEvery)
             {

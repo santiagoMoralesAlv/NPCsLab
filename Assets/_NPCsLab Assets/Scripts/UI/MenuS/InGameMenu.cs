@@ -30,7 +30,7 @@ namespace UI
             currentLevel.text = $"Meters: {(int)(LevelControl.Instance.TimeRunning/5)} M";
             coins.text = $"Coins: {LevelControl.Instance.Coins}";
 
-            int i = (int)(Mathf.Clamp(LevelControl.Instance.Coins, 0, 5)*0.6f);
+            int i = (int)(Mathf.Clamp(LevelControl.Instance.Coins, 0, 10)*0.3f);
 
             skill.sprite = skillSprites[3-i];
         }

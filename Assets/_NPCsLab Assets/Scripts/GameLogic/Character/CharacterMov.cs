@@ -58,12 +58,12 @@ public class CharacterMov : Singleton<CharacterMov>
 
     private void OnEnable()
     {
-        playerControls.Enable();
+        // playerControls.Enable();
     }
 
     private void OnDisable()
     {
-        playerControls.Disable();
+        // playerControls.Disable();
     }
 
     private void OnDestroy()
@@ -74,42 +74,52 @@ public class CharacterMov : Singleton<CharacterMov>
 
     void Start()
     {
-        //playerControls.General.PrimaryContact.started += ctx => StartTouchPrimary(ctx);
-        //playerControls.General.PrimaryContact.canceled += ctx => EndTouchPrimary(ctx);
 
-
-        //playerControls.General.Jump. += ctx => JumpControl;
-        //playerControls.General.Slide.started += _ => Slide();
-
+        /*
+        Mouse.current.leftButton.wasPressedThisFrame
+        playerControls.General.Jump. += ctx => JumpControl;
         playerControls.General.Slide.started += _ => Slide();
+
+         playerControls.General.Slide.performed += _ => SlideControl( playerControls.General.Slide.);*/
+        
+        playerControls.General.PrimaryPosition.started += ctx => TouchPrimary(ctx);
+        playerControls.General.PrimaryPress.performed += ctx => TouchPrimary(ctx);
+
+#if UNITY_ANDROID
+
+        playerControls.General.PrimaryPosition.started += ctx => TouchPrimary(ctx);
+        playerControls.General.PrimaryPosition.canceled += ctx => TouchPrimary(ctx);
+
         SwipeDetections.ESwipeUp += Jump;
         SwipeDetections.ESwipeDown += Slide;
+#else
+
+#endif
 
 
     }
 
-    public void JumpControl(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            Jump();
-        }
-    }
-    public void SlideControl(InputAction.CallbackContext context)
-    {
-        Debug.Log("1");
-        if (context.started)
-        {
-            Slide();
-        }
-    }
     
     void Update()
     {
         if (GameStatus.Instance.Status == Status.played)
         {
             Move();
+            
+#if UNITY_ANDROID
+            
+
+#else
+            if(Mouse.current.leftButton.wasPressedThisFrame)
+                Jump();
+            
+            if(Mouse.current.rightButton.wasPressedThisFrame)
+                Slide();
+#endif
+            
         }
+        
+        
     }
 
     public void TouchPrimary(InputAction.CallbackContext context)
@@ -147,10 +157,10 @@ public class CharacterMov : Singleton<CharacterMov>
             }
             else if (thirdJump && isVark)
             {
-                if (LevelControl.Instance.UseCoins(5))
+                if (LevelControl.Instance.UseCoins(10))
                 {
                     rb.Sleep();
-                    rb.AddForce(new Vector2(0, jumpSpeed*0.5f), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2(0, jumpSpeed*0.65f), ForceMode2D.Impulse);
                     
                     if (secondJump)
                         secondJump = false;
@@ -180,7 +190,7 @@ public class CharacterMov : Singleton<CharacterMov>
             }
             else if(!isVark)
             {
-                if (LevelControl.Instance.UseCoins(5))
+                if (LevelControl.Instance.UseCoins(10))
                 {
                     rb.Sleep();
                     rb.AddForce(new Vector2(0, -jumpSpeed), ForceMode2D.Impulse);
