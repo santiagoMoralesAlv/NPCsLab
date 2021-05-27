@@ -22,9 +22,9 @@ namespace UI
         
         void Update()
         {
-            level.text = $"Level reached: {LevelControl.Instance.PassedModules}";
-            time.text = $"Seconds: {(int)LevelControl.Instance.TimeRunning}";
-            coins.text = $"Collected coins: {LevelControl.Instance.Coins}";
+            level.text = $"Metros alcanzados: {(int)(LevelControl.Instance.PassedModules)}";
+            time.text = $"Segundos vivo: {(int)LevelControl.Instance.TimeRunning}";
+            coins.text = $"Monedas sobrantes: {LevelControl.Instance.Coins}";
         }
     }
 }

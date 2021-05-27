@@ -19,12 +19,12 @@ public class @CharacterMovInput : IInputActionCollection, IDisposable
             ""id"": ""55728df6-6155-4e80-961f-92ea2b420d71"",
             ""actions"": [
                 {
-                    ""name"": ""PrimaryPress"",
-                    ""type"": ""Button"",
-                    ""id"": ""5d71df34-d23b-49bb-a8b8-1f07dfc7c072"",
+                    ""name"": ""PrimaryContact"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""deee9c12-78da-4d14-a01c-17dfea837f14"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 },
                 {
                     ""name"": ""PrimaryPosition"",
@@ -35,8 +35,16 @@ public class @CharacterMovInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Move"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""af3f1a79-903c-413e-8361-eca1796e2c6d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Jump"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""1c5279ad-c37c-4c92-b6cd-0fcdd5ab6037"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -46,7 +54,7 @@ public class @CharacterMovInput : IInputActionCollection, IDisposable
                     ""name"": ""Slide"",
                     ""type"": ""PassThrough"",
                     ""id"": ""f0582139-20be-4148-8d1a-7ec64a1f6ac3"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -54,41 +62,63 @@ public class @CharacterMovInput : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
+                    ""id"": ""03262b05-d91a-47d3-8e72-edbbe6e5b634"",
+                    ""path"": ""<Touchscreen>/primaryTouch/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryContact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""5931dca3-9131-4972-b758-96000963f47a"",
                     ""path"": ""<Touchscreen>/primaryTouch/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Player"",
+                    ""groups"": """",
                     ""action"": ""PrimaryPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""6825884a-0725-4adf-af70-24e5960cf8dc"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""name"": ""Sideways"",
+                    ""id"": ""31c7a1f9-a1e8-4e50-a858-91319b6fc2f1"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""ef12dd8d-35ee-4167-810a-a21565362f0f"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""name"": ""negative"",
+                    ""id"": ""92ac8a7a-cfce-4e25-baa1-cb89db66a8f2"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Player"",
-                    ""action"": ""Jump"",
+                    ""groups"": """",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""00fda39e-88c1-4fb9-9b6f-ed318ba165fd"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
-                    ""id"": ""63c71b46-078a-4a58-ba53-16fbb148ca5e"",
-                    ""path"": ""<Keyboard>/upArrow"",
+                    ""id"": ""6825884a-0725-4adf-af70-24e5960cf8dc"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -106,44 +136,17 @@ public class @CharacterMovInput : IInputActionCollection, IDisposable
                     ""action"": ""Slide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1098e1d7-fe48-45fc-97bd-72baeb541da3"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Slide"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a0e14f25-ee6e-4e97-bbfd-8d13fcdc9fe6"",
-                    ""path"": ""<Mouse>/middleButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Player"",
-                    ""action"": ""PrimaryPress"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": [
-        {
-            ""name"": ""Player"",
-            ""bindingGroup"": ""Player"",
-            ""devices"": []
-        }
-    ]
+    ""controlSchemes"": []
 }");
         // General
         m_General = asset.FindActionMap("General", throwIfNotFound: true);
-        m_General_PrimaryPress = m_General.FindAction("PrimaryPress", throwIfNotFound: true);
+        m_General_PrimaryContact = m_General.FindAction("PrimaryContact", throwIfNotFound: true);
         m_General_PrimaryPosition = m_General.FindAction("PrimaryPosition", throwIfNotFound: true);
+        m_General_Move = m_General.FindAction("Move", throwIfNotFound: true);
         m_General_Jump = m_General.FindAction("Jump", throwIfNotFound: true);
         m_General_Slide = m_General.FindAction("Slide", throwIfNotFound: true);
     }
@@ -195,16 +198,18 @@ public class @CharacterMovInput : IInputActionCollection, IDisposable
     // General
     private readonly InputActionMap m_General;
     private IGeneralActions m_GeneralActionsCallbackInterface;
-    private readonly InputAction m_General_PrimaryPress;
+    private readonly InputAction m_General_PrimaryContact;
     private readonly InputAction m_General_PrimaryPosition;
+    private readonly InputAction m_General_Move;
     private readonly InputAction m_General_Jump;
     private readonly InputAction m_General_Slide;
     public struct GeneralActions
     {
         private @CharacterMovInput m_Wrapper;
         public GeneralActions(@CharacterMovInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @PrimaryPress => m_Wrapper.m_General_PrimaryPress;
+        public InputAction @PrimaryContact => m_Wrapper.m_General_PrimaryContact;
         public InputAction @PrimaryPosition => m_Wrapper.m_General_PrimaryPosition;
+        public InputAction @Move => m_Wrapper.m_General_Move;
         public InputAction @Jump => m_Wrapper.m_General_Jump;
         public InputAction @Slide => m_Wrapper.m_General_Slide;
         public InputActionMap Get() { return m_Wrapper.m_General; }
@@ -216,12 +221,15 @@ public class @CharacterMovInput : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_GeneralActionsCallbackInterface != null)
             {
-                @PrimaryPress.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPrimaryPress;
-                @PrimaryPress.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPrimaryPress;
-                @PrimaryPress.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPrimaryPress;
+                @PrimaryContact.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPrimaryContact;
+                @PrimaryContact.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPrimaryContact;
+                @PrimaryContact.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPrimaryContact;
                 @PrimaryPosition.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPrimaryPosition;
                 @PrimaryPosition.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPrimaryPosition;
                 @PrimaryPosition.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPrimaryPosition;
+                @Move.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnMove;
                 @Jump.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnJump;
@@ -232,12 +240,15 @@ public class @CharacterMovInput : IInputActionCollection, IDisposable
             m_Wrapper.m_GeneralActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @PrimaryPress.started += instance.OnPrimaryPress;
-                @PrimaryPress.performed += instance.OnPrimaryPress;
-                @PrimaryPress.canceled += instance.OnPrimaryPress;
+                @PrimaryContact.started += instance.OnPrimaryContact;
+                @PrimaryContact.performed += instance.OnPrimaryContact;
+                @PrimaryContact.canceled += instance.OnPrimaryContact;
                 @PrimaryPosition.started += instance.OnPrimaryPosition;
                 @PrimaryPosition.performed += instance.OnPrimaryPosition;
                 @PrimaryPosition.canceled += instance.OnPrimaryPosition;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -248,19 +259,11 @@ public class @CharacterMovInput : IInputActionCollection, IDisposable
         }
     }
     public GeneralActions @General => new GeneralActions(this);
-    private int m_PlayerSchemeIndex = -1;
-    public InputControlScheme PlayerScheme
-    {
-        get
-        {
-            if (m_PlayerSchemeIndex == -1) m_PlayerSchemeIndex = asset.FindControlSchemeIndex("Player");
-            return asset.controlSchemes[m_PlayerSchemeIndex];
-        }
-    }
     public interface IGeneralActions
     {
-        void OnPrimaryPress(InputAction.CallbackContext context);
+        void OnPrimaryContact(InputAction.CallbackContext context);
         void OnPrimaryPosition(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
     }

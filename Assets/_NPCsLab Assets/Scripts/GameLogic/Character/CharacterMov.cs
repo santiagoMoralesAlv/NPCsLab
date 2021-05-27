@@ -58,12 +58,12 @@ public class CharacterMov : Singleton<CharacterMov>
 
     private void OnEnable()
     {
-        // playerControls.Enable();
+        playerControls.Enable();
     }
 
     private void OnDisable()
     {
-        // playerControls.Disable();
+        playerControls.Disable();
     }
 
     private void OnDestroy()
@@ -82,13 +82,11 @@ public class CharacterMov : Singleton<CharacterMov>
 
          playerControls.General.Slide.performed += _ => SlideControl( playerControls.General.Slide.);*/
         
-        playerControls.General.PrimaryPosition.started += ctx => TouchPrimary(ctx);
-        playerControls.General.PrimaryPress.performed += ctx => TouchPrimary(ctx);
+        
 
 #if UNITY_ANDROID
-
-        playerControls.General.PrimaryPosition.started += ctx => TouchPrimary(ctx);
-        playerControls.General.PrimaryPosition.canceled += ctx => TouchPrimary(ctx);
+        playerControls.General.PrimaryContact.started += ctx => StartTouchPrimary(ctx);
+        playerControls.General.PrimaryContact.canceled += ctx => EndTouchPrimary(ctx);
 
         SwipeDetections.ESwipeUp += Jump;
         SwipeDetections.ESwipeDown += Slide;
@@ -122,18 +120,16 @@ public class CharacterMov : Singleton<CharacterMov>
         
     }
 
-    public void TouchPrimary(InputAction.CallbackContext context)
+    public void StartTouchPrimary(InputAction.CallbackContext context)
     {
-        Debug.Log("jeje"+context.performed+context.started);
-        if (context.started)
-        {
-            (OnStartTouch)?.Invoke(Utils.ScreenToWorld(context.ReadValue<Vector2>()),(float)context.startTime);
-        }
-        
-        if (context.canceled)
-        {
-            (OnEndTouch)?.Invoke(Utils.ScreenToWorld(context.ReadValue<Vector2>()), (float) context.time);
-        }
+        (OnStartTouch)?.Invoke(Utils.ScreenToWorld(playerControls.General.PrimaryPosition.ReadValue<Vector2>()),(float)context.startTime);
+
+    }
+    
+    public void EndTouchPrimary(InputAction.CallbackContext context)
+    {
+        (OnEndTouch)?.Invoke(Utils.ScreenToWorld(playerControls.General.PrimaryPosition.ReadValue<Vector2>()), (float) context.time);
+
     }
     
 
@@ -157,10 +153,10 @@ public class CharacterMov : Singleton<CharacterMov>
             }
             else if (thirdJump && isVark)
             {
-                if (LevelControl.Instance.UseCoins(10))
+                if (LevelControl.Instance.UseCoins())
                 {
                     rb.Sleep();
-                    rb.AddForce(new Vector2(0, jumpSpeed*0.65f), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2(0, jumpSpeed*0.75f), ForceMode2D.Impulse);
                     
                     if (secondJump)
                         secondJump = false;
@@ -190,7 +186,7 @@ public class CharacterMov : Singleton<CharacterMov>
             }
             else if(!isVark)
             {
-                if (LevelControl.Instance.UseCoins(10))
+                if (LevelControl.Instance.UseCoins())
                 {
                     rb.Sleep();
                     rb.AddForce(new Vector2(0, -jumpSpeed), ForceMode2D.Impulse);

@@ -18,23 +18,23 @@ namespace GameLogic.Levels
 
         [SerializeField] private ModuleBuilder moduleBuilder;
 
-        [SerializeField] private float velocity, timeRunning;
+        [SerializeField] private float timeRunning;
         [SerializeField] private int numOfModulesInGame;
-        static private float passedModules, maxPassedModules;
-        private int coins;
-        public float PassedModules => passedModules;
-        public float MaxPassedModules => maxPassedModules;
+        static int  passedModules, maxPassedModules;
+        private int coins, coinsCost;
+        public int PassedModules => passedModules;
+        public int MaxPassedModules => maxPassedModules;
         public float TimeRunning => timeRunning;
         public float Coins => coins;
+        public float CoinsCost => coinsCost;
 
-        public bool UseCoins(int coinsToUse)
+        public bool UseCoins()
         {
-            if ((coins - coinsToUse) >= 0)
+            if ((coins - coinsCost) >= 0)
             {
-                coins -= coinsToUse;
+                coins -= coinsCost;
                 return true;
             }
-
             return false;
         }
         
@@ -44,6 +44,7 @@ namespace GameLogic.Levels
 
         private void Awake()
         {
+            coinsCost = 1;
             //Singleton initialization
             instance = this;
 
@@ -62,6 +63,7 @@ namespace GameLogic.Levels
             LevelControl.Instance.InstanceSpecificModule("base");
             if (PlayerPrefs.GetInt("TutorialHasPlayed", 0) <= 0)
             {
+                LevelControl.Instance.InstanceSpecificModule("tutorial1");
                 LevelControl.Instance.InstanceSpecificModule("tutorial1");
                 LevelControl.Instance.InstanceSpecificModule("tutorial");
                 LevelControl.Instance.InstanceSpecificModule("tutorial2");
@@ -82,8 +84,10 @@ namespace GameLogic.Levels
                 if (!theFirtsTime)
                 {
                     passedModules = 0;
+                    maxPassedModules = 69;
                     coins = 0;
                     timeRunning = 0;
+                    coinsCost = 1;
 
                     Character.Instance.WakeUp();
                     InstanceFirtsModules();
@@ -109,9 +113,9 @@ namespace GameLogic.Levels
                 timeRunning += Time.deltaTime;
             }
 
-            if (timeRunning > maxPassedModules)
+            if (passedModules > maxPassedModules)
             {
-                maxPassedModules = timeRunning;
+                maxPassedModules = passedModules;
             }
         }
 
@@ -121,9 +125,10 @@ namespace GameLogic.Levels
         {
             coins++;
         }
-        
-        
 
+
+
+        [SerializeField] private float velocity, initialVelocity;
         void FixedUpdate()
         {
             if ((GameStatus.Instance.Status == Status.played || GameStatus.Instance.Status == Status.paused) && Character.Instance.IsAlive)
@@ -132,16 +137,24 @@ namespace GameLogic.Levels
                 {
                     if (timeRunning > 0 && Time.timeScale>0)
                     {
+                        velocity = 
+                                   (Mathf.Log(((timeRunning * Time.timeScale ) +20) * 1000))-initialVelocity;
                         module.transform.Translate(
-                            Vector3.left * (Time.fixedDeltaTime * (Mathf.Log(velocity * timeRunning * Time.timeScale))), Space.Self);
+                            Vector3.left * (Time.fixedDeltaTime *velocity), Space.Self);
+                        
                     }
                 }
 
-                if (modules.Peek().transform.position.x <= -modules.Peek().WidthSize)
+                if (modules.Peek().transform.position.x <= -modules.Peek().WidthSize-20)
                 {
-                    modules.Dequeue().DeactiveParts();
+                    modules.Dequeue().gameObject.SetActive(false);
                     InstanceRandomModule();
                     passedModules++;
+
+                    if (passedModules % 5 == 0 && coinsCost <= 55)
+                    {
+                        coinsCost += passedModules/5;
+                    }
                 }
             }
         }
@@ -150,9 +163,16 @@ namespace GameLogic.Levels
         private void InstanceFirtsModules()
         {
             (EInit)?.Invoke();
-            for (int i = 0; i < numOfModulesInGame; i++)
+            for (int i = 0; i < numOfModulesInGame+10; i++)
             {
-                InstanceRandomModule();
+                if (i < numOfModulesInGame)
+                {
+                    InstanceRandomModule();
+                }
+                else
+                {
+                    InstanceNullModule();
+                }
             }
         }
 
@@ -164,6 +184,11 @@ namespace GameLogic.Levels
         private void InstanceRandomModule()
         {
             modules.Enqueue(moduleBuilder.WithCompletedModule(transform, GetLastModule()).Build());
+        }
+        
+        private void InstanceNullModule()
+        {
+            moduleBuilder.WithCompletedModule(transform, GetLastModule()).Build().DeactiveParts();
         }
 
         private ModuleTransform GetLastModule()

@@ -1430,7 +1430,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 886832691223169950, guid: 036ef75791a30ab45b0ba560749e2300, type: 3}
       propertyPath: m_InstanceId
-      value: -2657376
+      value: -1277918
+      objectReference: {fileID: 0}
+    - target: {fileID: 886832691223169950, guid: 036ef75791a30ab45b0ba560749e2300, type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1493503840547508295, guid: 036ef75791a30ab45b0ba560749e2300, type: 3}
       propertyPath: ShapeModule.m_Scale.y

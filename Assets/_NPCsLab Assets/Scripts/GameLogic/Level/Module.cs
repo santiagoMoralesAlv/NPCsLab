@@ -38,8 +38,6 @@ namespace GameLogic.Levels
             }
         }
 
-        private GameObject escenary;
-        private GameObject[] platforms, pickups, hazards;
 
         public GameObject Escenary
         {
@@ -65,101 +63,82 @@ namespace GameLogic.Levels
             set => hazards = value;
         }
 
-        public void ActiveParts()
-        {
-            try
-            {
-                escenary.SetActive(true);
-                escenary.transform.SetParent(this.transform);
-            }
-            catch (Exception e)
-            {
-            }
-            try
-            {
-                foreach (var platform in platforms)
-                {
-                    platform.SetActive(true);
-                    platform.transform.SetParent(this.transform);
-                }
-            }
-            catch (Exception e)
-            {
-            }
-            try
-            {
-                foreach (var pickup in pickups)
-                {
-                    pickup.SetActive(true);
-                    pickup.transform.SetParent(this.transform);
-                }
+        
+        private GameObject escenary;
+        private GameObject[] platforms, pickups, hazards;
 
-            }
-            catch (Exception e)
+        private bool buildParts; 
+        public void BuiltParts()
+        {
+            Coin[] coins = GetComponentsInChildren<Coin>();
+            pickups = new GameObject[coins.Length];
+            for (int i = 0; i < coins.Length; i++)
             {
-            }
-            try
-            {
-                foreach (var hazard in hazards)
-                {
-                    hazard.SetActive(true);
-                    hazard.transform.SetParent(this.transform);
-                }
-            }
-            catch (Exception e)
-            {
+                pickups[i] = coins[i].gameObject;
+                pickups[i].transform.SetParent(this.transform);
             }
             
-            gameObject.SetActive(true);
+            /*(escenary)?.transform.SetParent(this.transform);
+            foreach (var platform in platforms)
+            {
+                (platform)?.transform.SetParent(this.transform);
+            }
+            
+            foreach (var hazard in hazards)
+            {
+                (hazard)?.transform.SetParent(this.transform);
+            }*/
+            
             gameObject.transform.SetParent(null);
+        }
+        
+        public void ActiveParts()
+        {
+            if (!buildParts)
+            {
+                BuiltParts();
+                buildParts = true;
+            }
+            
+            foreach (var pickup in pickups)
+            {
+                (pickup)?.SetActive(true);
+            }
+            
+            /*(escenary)?.SetActive(true);
+            foreach (var platform in platforms)
+            {
+                (platform)?.SetActive(true);
+            }
+            
+            foreach (var hazard in hazards)
+            {
+                (hazard)?.SetActive(true);
+            }*/
+            
+            
+            gameObject.SetActive(true);
         }
         
         public void DeactiveParts()
         {
-            try
+            foreach (var pickup in pickups)
             {
-                escenary.SetActive(false);
-                escenary.transform.SetParent(null);
-            }
-            catch (Exception e)
-            {
-            }
-            try
-            {
-                foreach (var platform in platforms)
-                {
-                    platform.SetActive(false);
-                    platform.transform.SetParent(null);
-                }
-            }
-            catch (Exception e)
-            {
-            }
-            try
-            {
-                foreach (var pickup in pickups)
-                {
-                    pickup.SetActive(false);
-                    pickup.transform.SetParent(null);
-                }
-            }
-            catch (Exception e)
-            {
-            }
-            try
-            {
-                foreach (var hazard in hazards)
-                {
-                    hazard.SetActive(false);
-                    hazard.transform.SetParent(null);
-                }
-            }
-            catch (Exception e)
-            {
+                (pickup)?.SetActive(false);
             }
             
+            /*(escenary)?.SetActive(true);
+            foreach (var platform in platforms)
+            {
+                (platform)?.SetActive(true);
+            }
+            
+            foreach (var hazard in hazards)
+            {
+                (hazard)?.SetActive(true);
+            }*/
+            
             gameObject.SetActive(false);
-            gameObject.transform.SetParent(null);
         }
     }
 }

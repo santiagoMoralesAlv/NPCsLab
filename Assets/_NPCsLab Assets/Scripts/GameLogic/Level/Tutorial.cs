@@ -73,7 +73,7 @@ namespace GameLogic.Levels
                 }
                 else
                 {
-                    textComp.text = "¿De nuevo en el principio Dummy?, concentrate mas, asi nunca encontraras a Vark...";
+                    textComp.text = "¿Otra vez por aqui Dummy?, te falta odio zazuque, asi nunca encontraras a Vark...";
                     textSecond.text = "";
                 }
                 StartCoroutine("troll");
