@@ -153,11 +153,15 @@ namespace GameLogic.Levels
 
                     if (passedModules % 5 == 0 && coinsCost <= 55)
                     {
-                        coinsCost += passedModules/5;
+                        int newValue = coinsCost + fibo;
+                        fibo = coinsCost;
+                        coinsCost = newValue;
                     }
                 }
             }
         }
+
+        private int fibo;
 
         public Action EInit;
         private void InstanceFirtsModules()
